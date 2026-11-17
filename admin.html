@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>小泽羊毛 - 站长可视化口令配置中心</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <style>
+      .admin-container {
+        max-width: 760px;
+        margin: 20px auto 80px;
+        padding: 0 16px;
+      }
+      .admin-header {
+        background: #fff;
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+        border: 1px solid #ebeff5;
+        text-align: center;
+      }
+      .admin-header h1 {
+        margin: 10px 0 6px;
+        font-size: 22px;
+        color: #1a1c23;
+      }
+      .admin-header p {
+        margin: 0;
+        color: #7a8194;
+        font-size: 14px;
+      }
+      .section-box {
+        background: #fff;
+        border-radius: 14px;
+        padding: 20px;
+        margin-bottom: 18px;
+        border: 1px solid #ebeff5;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      }
+      .section-box h2 {
+        font-size: 16px;
+        margin: 0 0 14px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #fff1e3;
+        color: #e8720a;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .form-group {
+        margin-bottom: 14px;
+      }
+      .form-group label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #333;
+      }
+      .form-group .hint {
+        font-size: 12px;
+        color: #999;
+        margin-top: 3px;
+      }
+      .form-group input, .form-group textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 12px;
+        border: 1.5px solid #ebeff5;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: border-color 0.2s;
+        font-family: inherit;
+      }
+      .form-group input:focus, .form-group textarea:focus {
+        outline: none;
+        border-color: #ff8a1f;
+        box-shadow: 0 0 0 3px rgba(255, 138, 31, 0.15);
+      }
+      .action-bar {
+        position: sticky;
+        bottom: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        padding: 16px;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        border: 1px solid #ebeff5;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        z-index: 100;
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, #ff8a1f 0%, #ff5500 100%);
+        color: #fff;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 24px;
+        font-weight: 700;
+        font-size: 15px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(255, 85, 0, 0.25);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .btn-secondary {
+        background: #fff;
+        color: #e8720a;
+        border: 1.5px solid #ff8a1f;
+        padding: 12px 20px;
+        border-radius: 24px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      .btn-view {
+        background: #f6f7fb;
+        color: #555;
+        border: 1.5px solid #ddd;
+        padding: 12px 20px;
+        border-radius: 24px;
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+      }
+      .toast {
+        position: fixed;
+        top: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #1a1c23;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-size: 14px;
+        display: none;
+        z-index: 999;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      }
+      .nav-top {
+        margin-bottom: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body style="background:#f6f7fb;">
+    <div id="toast" class="toast"></div>
+
+    <div class="admin-container">
+      <div class="nav-top">
+        <a href="/" style="color:#ff8a1f; text-decoration:none; font-weight:600; font-size:14px;">← 返回小泽羊毛首页</a>
+        <span style="font-size:13px; color:#888;">站长本地管理模式</span>
+      </div>
+
+      <header class="admin-header">
+        <img src="/assets/logo.svg" alt="Logo" width="56" height="56" />
+        <h1>站长可视化口令配置中心</h1>
+        <p>在此直接填入您的推广口令与联系方式，一键导出全站生效，再也不用翻看复杂代码！</p>
+      </header>
+
+      <form id="config-form">
+        <!-- 模块一：社群与联系方式 -->
+        <div class="section-box">
+          <h2>👥 社群与私域引流</h2>
+          <div class="form-group">
+            <label for="cfg_groupNumber">交流群号 / 微信号</label>
+            <input type="text" id="cfg_groupNumber" placeholder="例如：300260356 或 你的微信号" />
+            <div class="hint">全站顶部“加入交流群”、底部群号与弹窗将自动同步此号码</div>
+          </div>
+          <div class="form-group">
+            <label for="cfg_groupLink">一键加群外链（选填）</label>
+            <input type="url" id="cfg_groupLink" placeholder="例如：https://yb.tencent.com/gp/i/..." />
+            <div class="hint">加群弹窗中的“点击链接加入”按钮跳转地址，若无链接可留空</div>
+          </div>
+          <div class="form-group">
+            <label for="cfg_notice">群介绍 / 弹窗公告文字</label>
+            <textarea id="cfg_notice" rows="2" placeholder="欢迎加入小泽羊毛线报群..."></textarea>
+          </div>
+        </div>
+
+        <!-- 模块二：美团 & 饿了么 外卖优惠 -->
+        <div class="section-box">
+          <h2>🛵 美团 & 饿了么（外卖生活）</h2>
+          <div class="form-group">
+            <label for="cfg_meituan_waimai">美团外卖 · 大额天天神券口令</label>
+            <input type="text" id="cfg_meituan_waimai" placeholder="粘贴您的美团联盟外卖口令或短链" />
+            <div class="hint">对应全站所有“美团外卖”主活动卡片</div>
+          </div>
+          <div class="form-group">
+            <label for="cfg_meituan_card">美团外卖 · 9.9元年卡/神券包口令</label>
+            <input type="text" id="cfg_meituan_card" placeholder="粘贴美团神券包专属口令" />
+            <div class="hint">对应美团神券包、月卡优惠卡片</div>
+          </div>
+          <div class="form-group">
+            <label for="cfg_eleme_waimai">饿了么 · 天天领神券口令（选填）</label>
+            <input type="text" id="cfg_eleme_waimai" placeholder="粘贴淘宝联盟饿了么外卖口令" />
+          </div>
+        </div>
+
+        <!-- 模块三：淘宝 & 天猫 电商购物 -->
+        <div class="section-box">
+          <h2>🛍️ 淘宝 & 天猫（电商网购）</h2>
+          <div class="form-group">
+            <label for="cfg_taobao_shangou">淘宝闪购 / 外卖优惠口令</label>
+            <input type="text" id="cfg_taobao_shangou" placeholder="例如：￥hff26Wdoq5J￥/ HU7405" />
+            <div class="hint">全站淘宝闪购、小时达类优惠自动使用此淘口令</div>
+          </div>
+          <div class="form-group">
+            <label for="cfg_taobao_supermarket">天猫超市 · 专属立减券口令（选填）</label>
+            <input type="text" id="cfg_taobao_supermarket" placeholder="粘贴天猫超市专属淘口令" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_taobao_general">淘宝百亿补贴 / 通用淘客口令（选填）</label>
+            <input type="text" id="cfg_taobao_general" placeholder="粘贴淘宝客通用口令" />
+          </div>
+        </div>
+
+        <!-- 模块四：京东 电商与外卖 -->
+        <div class="section-box">
+          <h2>📦 京东商城（京粉返利）</h2>
+          <div class="form-group">
+            <label for="cfg_jd_waimai">京东外卖优惠口令</label>
+            <input type="text" id="cfg_jd_waimai" placeholder="例如：！M06Nx0HL7VunCqHG！ CA1393" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_jd_one_cent">京东 · 新老用户 1 分购口令</label>
+            <input type="text" id="cfg_jd_one_cent" placeholder="例如：！Z6Y9PFxeGgB2NFby！ MF8555" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_jd_limited_sale">京东 · 30元限时优惠会场口令</label>
+            <input type="text" id="cfg_jd_limited_sale" placeholder="例如：！O2GVr2DZKg2DsER0！ ZH9112" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_jd_month_card">京东 · 外卖月卡专属口令</label>
+            <input type="text" id="cfg_jd_month_card" placeholder="例如：！CFG2Y5kl3vPmYy65！ MF8555" />
+          </div>
+        </div>
+
+        <!-- 模块五：出行与通信 -->
+        <div class="section-box">
+          <h2>🚕 出行打车与通信话费</h2>
+          <div class="form-group">
+            <label for="cfg_didi">滴滴打车券口令 / 领券链接（选填）</label>
+            <input type="text" id="cfg_didi" placeholder="粘贴滴滴联盟推广链接或口令" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_unicom_bill">中国联通话费立减券口令（选填）</label>
+            <input type="text" id="cfg_unicom_bill" placeholder="粘贴联通话费福利口令" />
+          </div>
+        </div>
+      </form>
+
+      <!-- 底部吸底操作栏 -->
+      <div class="action-bar">
+        <button type="button" class="btn-primary" id="btn-download">
+          ⬇️ 一键下载 config.js
+        </button>
+        <button type="button" class="btn-secondary" id="btn-copy">
+          📋 复制配置代码
+        </button>
+        <button type="button" class="btn-secondary" id="btn-preview">
+          ⚡ 立即本地生效预览
+        </button>
+        <a href="/" class="btn-view" target="_blank">
+          👀 打开首页
+        </a>
+      </div>
+
+      <!-- 更新发布说明 -->
+      <div class="section-box" style="margin-top:30px; background:#fff7ed; border-color:#ffd8a8;">
+        <h2 style="color:#d97706; border-color:#fed7aa;">💡 快速更新发布三步法</h2>
+        <ol style="margin:0; padding-left:20px; font-size:14px; line-height:1.8; color:#78350f;">
+          <li>在上面输入框粘贴好您的推广口令后，点击 <strong>【一键下载 config.js】</strong>；</li>
+          <li>将下载的文件直接拖入本项目的 <code>assets/</code> 文件夹，覆盖原来的 <code>assets/config.js</code>；</li>
+          <li>在本地终端运行：<code>git add . && git commit -m "update: 更新推广口令" && git push</code>；Cloudflare 就会在几十秒内自动更新上线！</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 预加载当前已有的 config.js -->
+    <script src="/assets/config.js"></script>
+    <script>
+      function showToast(msg) {
+        const toast = document.getElementById('toast');
+        toast.textContent = msg;
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 2500);
+      }
+
+      // 初始化表单数据
+      document.addEventListener('DOMContentLoaded', () => {
+        // 优先读取 localStorage 中的缓存，否则读取 SITE_CONFIG
+        let saved = null;
+        try {
+          saved = JSON.parse(localStorage.getItem('XIAOZE_PREVIEW_CONFIG') || 'null');
+        } catch(e) {}
+
+        const cfg = saved || window.SITE_CONFIG || {};
+        const comm = cfg.community || {};
+        const codes = cfg.codes || {};
+
+        document.getElementById('cfg_groupNumber').value = comm.groupNumber || '';
+        document.getElementById('cfg_groupLink').value = comm.groupLink || '';
+        document.getElementById('cfg_notice').value = comm.notice || '';
+
+        const codeKeys = [
+          'meituan_waimai', 'meituan_card', 'eleme_waimai',
+          'taobao_shangou', 'taobao_supermarket', 'taobao_general',
+          'jd_waimai', 'jd_one_cent', 'jd_limited_sale', 'jd_month_card',
+          'didi', 'unicom_bill'
+        ];
+
+        codeKeys.forEach(key => {
+          const el = document.getElementById('cfg_' + key);
+          if (el) el.value = codes[key] || '';
+        });
+      });
+
+      // 生成完整的 JS 代码
+      function generateConfigJs() {
+        const groupNumber = document.getElementById('cfg_groupNumber').value.trim();
+        const groupLink = document.getElementById('cfg_groupLink').value.trim();
+        const notice = document.getElementById('cfg_notice').value.trim();
+
+        const codes = {};
+        const codeKeys = [
+          'meituan_waimai', 'meituan_card', 'eleme_waimai',
+          'taobao_shangou', 'taobao_supermarket', 'taobao_general',
+          'jd_waimai', 'jd_one_cent', 'jd_limited_sale', 'jd_month_card',
+          'didi', 'unicom_bill'
+        ];
+        codeKeys.forEach(k => {
+          codes[k] = document.getElementById('cfg_' + k).value.trim();
+        });
+
+        return `/**
+ * ============================================================================
+ * 小泽羊毛 - 站长全局专属配置文件 (assets/config.js)
+ * 自动生成时间: ${new Date().toLocaleString()}
+ * ============================================================================
+ */
+
+window.SITE_CONFIG = {
+  siteName: "小泽羊毛",
+  siteSlogan: "把省下来的钱，留给更重要的事",
+
+  // 社群与私域引流
+  community: {
+    groupName: "小泽羊毛线报交流群",
+    groupNumber: ${JSON.stringify(groupNumber)},
+    groupLink: ${JSON.stringify(groupLink)},
+    notice: ${JSON.stringify(notice)}
+  },
+
+  // 核心平台推广口令
+  codes: ${JSON.stringify(codes, null, 4)}
+};
+`;
+      }
+
+      // 1. 一键下载 config.js
+      document.getElementById('btn-download').addEventListener('click', () => {
+        const content = generateConfigJs();
+        const blob = new Blob([content], { type: 'application/javascript;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'config.js';
+        a.click();
+        URL.revokeObjectURL(a.href);
+        showToast('✓ config.js 已生成并开始下载！请拖入 assets/ 目录替换');
+      });
+
+      // 2. 复制配置代码
+      document.getElementById('btn-copy').addEventListener('click', () => {
+        const content = generateConfigJs();
+        navigator.clipboard.writeText(content).then(() => {
+          showToast('✓ 配置代码已复制到剪贴板！');
+        }).catch(() => {
+          showToast('复制失败，请手动选择复制');
+        });
+      });
+
+      // 3. 本地即时生效预览
+      document.getElementById('btn-preview').addEventListener('click', () => {
+        const groupNumber = document.getElementById('cfg_groupNumber').value.trim();
+        const groupLink = document.getElementById('cfg_groupLink').value.trim();
+        const notice = document.getElementById('cfg_notice').value.trim();
+        const codes = {};
+        const codeKeys = [
+          'meituan_waimai', 'meituan_card', 'eleme_waimai',
+          'taobao_shangou', 'taobao_supermarket', 'taobao_general',
+          'jd_waimai', 'jd_one_cent', 'jd_limited_sale', 'jd_month_card',
+          'didi', 'unicom_bill'
+        ];
+        codeKeys.forEach(k => {
+          codes[k] = document.getElementById('cfg_' + k).value.trim();
+        });
+
+        const previewConfig = {
+          siteName: "小泽羊毛",
+          community: { groupNumber, groupLink, notice },
+          codes: codes
+        };
+
+        localStorage.setItem('XIAOZE_PREVIEW_CONFIG', JSON.stringify(previewConfig));
+        showToast('✓ 本地配置已生效！正在打开首页查看...');
+        setTimeout(() => {
+          window.open('/', '_blank');
+        }, 800);
+      });
+    </script>
+  </body>
+</html>

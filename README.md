@@ -14,6 +14,9 @@
   - **银行支付**：各大银行微信立减金、支付宝红包、云闪付满减、数字人民币红包。
   - **电商购物**：京东、淘宝、天猫、拼多多大额补贴与一分购。
   - **出行住宿**：打车券、加油满减、机票酒店特惠。
+- **极简维护方案（告别复杂改码）**：
+  - **方案一（极简单文件全局配置）**：仅需修改 `assets/config.js` 这一处，全站几十个卡片与社群信息全部自动同步！
+  - **方案二（可视化管理后台）**：直接在浏览器中打开 `admin.html`，像填问卷一样输入口令，一键生成/下载配置文件或本地实时预览！
 - **高效交互体验**：
   - 一键复制口令与 App Scheme 自动唤醒。
   - 实时关键词搜索与分类即时筛选。
@@ -31,6 +34,7 @@
 ```text
 .
 ├── index.html               # 首页（默认展示吃喝玩乐板块）
+├── admin.html               # 【新】站长可视化口令配置中心（双击直接在浏览器打开修改）
 ├── shopping/
 │   └── index.html           # 电商购物板块
 ├── travel/
@@ -43,11 +47,12 @@
 ├── _headers                 # Cloudflare Pages 静态缓存与安全响应头
 ├── _redirects               # Cloudflare Pages 友好路由规则
 └── assets/
+    ├── config.js            # 【核心推荐】站长专属口令配置表（只改这一个文件即可！）
     ├── style.css            # 全局样式表（色彩系统、卡片、响应式布局）
-    ├── app.js               # 前端核心业务逻辑（搜索、筛选、复制、交互）
+    ├── app.js               # 前端核心业务逻辑（搜索、筛选、口令智能替换、交互）
     ├── share.js             # 分享与弹窗海报模块
-    ├── coupons.js           # 【核心】优惠活动与推广口令数据源
-    ├── banks.js             # 【核心】各大银行支付与立减金数据源
+    ├── coupons.js           # 完整优惠活动数据源（由 config.js 自动关联）
+    ├── banks.js             # 各大银行支付与立减金数据源
     ├── logo.svg             # 小泽羊毛矢量品牌 Logo
     ├── platforms/           # 各大电商与平台图标（美团、淘宝、京东等）
     └── banks/               # 各大银行与卡组织图标
@@ -55,65 +60,48 @@
 
 ---
 
-## ✏️ 如何修改为你自己的推广口令与链接
+## ✏️ 极简修改口令教程（两种方法任选）
 
-当你申请了美团联盟、淘宝客、京粉或其他推客联盟账号后，只需修改 `assets/` 目录下的数据文件，**无需改动任何页面 HTML 样式代码**：
+### 方法 A：通过可视化后台修改（零代码，最直观）
+1. 双击用浏览器打开项目根目录下的 **`admin.html`**；
+2. 在表单中填入您的交流群号、美团口令、淘宝口令、京东口令等；
+3. 点击底部的 **【一键下载 config.js】**；
+4. 将下载的文件拖入 `assets/` 目录替换原文件；
+5. 运行 `git add . && git commit -m "update: 更新口令" && git push` 即可！
 
-### 1. 修改优惠活动与口令 (`assets/coupons.js`)
-打开 `assets/coupons.js`，找到对应的活动条目修改即可。例如：
+### 方法 B：直接修改 `assets/config.js`（10 秒搞定）
+用任意文本编辑器打开 `assets/config.js`，只需修改以下几十行：
 ```javascript
-{
-  id: "meituan-waimai-01",      // 活动唯一ID（用于生成直达链接）
-  platform: "美团",             // 平台名称
-  category: "外卖",             // 所属分类
-  title: "美团外卖大额神券",     // 卡片标题
-  desc: "天天可领大额神券",      // 优惠描述
-  code: "http://💰你的美团口令💰", // 【换成你的推广口令或推广短链】
-  tag: "热门",                  // 标签文本
-  deadline: "长期有效"
-}
-```
+window.SITE_CONFIG = {
+  // 1. 社群与联系方式
+  community: {
+    groupNumber: "填你的QQ群或微信号",
+    groupLink: "填加群链接（选填）",
+    notice: "欢迎加入小泽羊毛线报群..."
+  },
 
-### 2. 修改交流群与微信客服 (`index.html`)
-打开 `index.html`，搜索 `group-dialog` 区域，将群号 `300260356` 或说明替换为您自己的微信群号、公众号名称或个人微信号二维码即可。
+  // 2. 平台核心推广口令（填一次，全站几十个对应卡片自动全量替换）
+  codes: {
+    meituan_waimai: "填你的美团外卖口令",
+    meituan_card: "填你的美团年卡口令",
+    eleme_waimai: "填你的饿了么口令",
+    taobao_shangou: "填你的淘宝闪购口令",
+    taobao_supermarket: "填你的天猫超市口令",
+    jd_waimai: "填你的京东外卖口令",
+    jd_one_cent: "填你的京东1分购口令",
+    jd_limited_sale: "填你的京东30元会场通用券",
+    didi: "填你的滴滴打车口令"
+  }
+};
+```
+修改后，全站所有卡片都会**自动读取并优先展示**您填写的口令！
 
 ---
 
 ## 🚀 部署至 Cloudflare Pages 并绑定域名
 
-由于您拥有 Cloudflare 域名，推荐使用 **GitHub + Cloudflare Pages** 联动部署，后续在 GitHub 上修改代码后，网站会自动重新构建上线：
-
-### 第一步：推送到 GitHub 仓库
-1. 本地代码已全部就绪并完成 Git 初始化；
-2. 推送至您的 GitHub 账号（例如仓库名 `xiaozeyangmao`）。
-
-### 第二步：登录 Cloudflare 控制台
-1. 打开 [Cloudflare Dashboard](https://dash.cloudflare.com/) 并登录；
-2. 在左侧菜单点击 **Workers 和 Pages (Workers & Pages)** -> 点击 **创建应用程序 (Create application)**；
-3. 选择 **Pages** 选项卡 -> 点击 **连接到 Git (Connect to Git)**；
-4. 选择刚刚创建的 GitHub 仓库 `xiaozeyangmao`；
-5. 在构建配置（Build Settings）中：
-   - **Framework preset（框架预设）**：选择 `None`
-   - **Build command（构建命令）**：留空无需填写
-   - **Build output directory（构建输出目录）**：留空或填写 `/`
-6. 点击 **保存并部署 (Save and Deploy)**。
-
-### 第三步：绑定您的 Cloudflare 自定义域名
-1. 部署完成后，在 Pages 项目详情页点击 **自定义域 (Custom Domains)**；
-2. 点击 **设置自定义域 (Set up a custom domain)**；
-3. 输入您在 Cloudflare 托管的域名（如 `yangmao.yourdomain.com` 或根域名 `yourdomain.com`）；
-4. 点击继续，Cloudflare 会自动为您配置 DNS CNAME 记录并签发全球 SSL 证书；
-5. 等待 1~2 分钟，即可通过您的自定义域名访问「小泽羊毛」！
-
----
-
-## 💻 本地预览与调试
-
-如需在本地电脑查看效果：
-```bash
-# 在项目根目录下启动本地预览服务（使用 Python 自带的 HTTP 服务）
-python -m http.server 18080
-
-# 然后在浏览器中打开：
-# http://localhost:18080
-```
+1. 代码已同步至您的 GitHub 仓库：[https://github.com/janye2020/xiaozeyangmao](https://github.com/janye2020/xiaozeyangmao)
+2. 登录 [Cloudflare Dashboard](https://dash.cloudflare.com/)；
+3. 点击 **Workers 和 Pages** -> **创建应用程序** -> **Pages** -> **连接到 Git**；
+4. 选择仓库 `xiaozeyangmao`，构建预设选 `None`，构建命令留空，点击 **保存并部署**；
+5. 进入 Pages 项目，在 **自定义域 (Custom Domains)** 绑定您的 Cloudflare 域名即可！

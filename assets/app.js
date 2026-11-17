@@ -1,4 +1,100 @@
 /**
+ * 小泽羊毛 - 站点核心配置注入与口令智能替换层
+ */
+(function initSiteConfig() {
+  // 1. 尝试读取本地可视化预览临时配置（通过 admin.html 设置）
+  try {
+    const preview = JSON.parse(localStorage.getItem('XIAOZE_PREVIEW_CONFIG') || 'null');
+    if (preview) {
+      window.SITE_CONFIG = preview;
+    }
+  } catch(e) {}
+
+  const cfg = window.SITE_CONFIG;
+  if (!cfg || !Array.isArray(globalThis.TINGHUI_COUPONS)) return;
+
+  const codes = cfg.codes || {};
+  const idMap = {
+    'coupon-001': codes.meituan_waimai,
+    'coupon-002': codes.taobao_shangou,
+    'coupon-003': codes.jd_waimai,
+    'coupon-004': codes.meituan_card,
+    'coupon-005': codes.jd_month_card,
+    'jd-pay-one-cent': codes.jd_one_cent,
+    'jd-limited-sale-30-coupon': codes.jd_limited_sale,
+    'shopping-taobao-flash-sale-redpacket': codes.taobao_shangou,
+    'shopping-taobao-billion-subsidy': codes.taobao_general,
+    'shopping-taobao-tmall-supermarket': codes.taobao_supermarket,
+    'phone-unicom-bill-voucher': codes.unicom_bill
+  };
+
+  // 遍历所有卡片，将站长在 config.js 中配置的口令自动注入
+  globalThis.TINGHUI_COUPONS.forEach(item => {
+    // 优先 ID 严格映射
+    if (idMap[item.id]) {
+      item.code = idMap[item.id];
+      return;
+    }
+    const title = item.title || '';
+    if (item.platform === '美团') {
+      if ((title.includes('月卡') || title.includes('年卡') || title.includes('神券包')) && codes.meituan_card) {
+        item.code = codes.meituan_card;
+      } else if (codes.meituan_waimai) {
+        item.code = codes.meituan_waimai;
+      }
+    } else if (item.platform === '京东') {
+      if ((title.includes('1分') || title.includes('一分')) && codes.jd_one_cent) {
+        item.code = codes.jd_one_cent;
+      } else if (title.includes('月卡') && codes.jd_month_card) {
+        item.code = codes.jd_month_card;
+      } else if ((title.includes('限时') || title.includes('30元')) && codes.jd_limited_sale) {
+        item.code = codes.jd_limited_sale;
+      } else if (title.includes('外卖') && codes.jd_waimai) {
+        item.code = codes.jd_waimai;
+      } else if (codes.jd_general) {
+        item.code = codes.jd_general;
+      }
+    } else if (item.platform === '淘宝' || item.platform === '淘宝闪购') {
+      if (title.includes('超市') && codes.taobao_supermarket) {
+        item.code = codes.taobao_supermarket;
+      } else if ((title.includes('闪购') || title.includes('外卖')) && codes.taobao_shangou) {
+        item.code = codes.taobao_shangou;
+      } else if (codes.taobao_general) {
+        item.code = codes.taobao_general;
+      }
+    } else if (item.platform === '饿了么' && codes.eleme_waimai) {
+      item.code = codes.eleme_waimai;
+    } else if ((item.platform === '滴滴' || title.includes('滴滴')) && codes.didi) {
+      item.code = codes.didi;
+    }
+  });
+
+  // 页面加载完成后同步社群联系方式与弹窗
+  window.addEventListener('DOMContentLoaded', () => {
+    const comm = cfg.community;
+    if (!comm) return;
+    if (comm.groupNumber) {
+      document.querySelectorAll('#group-dialog strong, .group-number-val').forEach(el => {
+        el.textContent = comm.groupNumber;
+      });
+      const copyBtn = document.getElementById('copy-group-number');
+      if (copyBtn) {
+        copyBtn.onclick = () => {
+          navigator.clipboard.writeText(comm.groupNumber).then(() => {
+            const statusEl = document.getElementById('group-copy-status');
+            if (statusEl) statusEl.textContent = '✓ 群号已成功复制到剪贴板！';
+          });
+        };
+      }
+    }
+    if (comm.groupLink) {
+      const linkEl = document.querySelector('#group-dialog a.claim-btn');
+      if (linkEl) linkEl.href = comm.groupLink;
+    }
+  });
+})();
+
+/**
  * 小泽羊毛 - 前端核心交互控制器 (app.js)
  * 功能包含：
  * 1. 优惠卡片渲染与分类筛选（外卖、闪购、买药、生活、电商、出行等）
