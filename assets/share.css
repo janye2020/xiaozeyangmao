@@ -1,0 +1,30 @@
+.share-button{display:block;margin:14px 0 0 auto;border:1px solid #e5d9cc;border-radius:20px;padding:7px 15px;background:#fffaf4;color:#985033;font:inherit;font-size:13px;cursor:pointer}.share-button:hover{background:#f9e8d8}.share-dialog{width:min(94vw,680px);max-height:92dvh;padding:0;border:1px solid #e6dfd4;border-radius:22px;background:#fffcf7;color:#292721;box-shadow:0 22px 90px #0004}.share-dialog::backdrop{background:#20180f88}.share-dialog header{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:#fffcf7;border-bottom:1px solid #eee4d8;font-size:21px}.share-dialog header button{border:0;border-radius:50%;background:#f0e9df;width:40px;height:40px;font-size:28px;cursor:pointer}.share-body{padding:20px 24px}.share-poster{display:block;width:100%;height:auto;border-radius:16px}.share-link{display:flex;gap:8px;margin:18px 0 12px}.share-link input{min-width:0;flex:1;border:1px solid #ded6c9;border-radius:9px;padding:12px;font-size:14px}.share-link button,.share-save,.activity-detail>button{border:0;border-radius:9px;background:#d94d2e;color:white;padding:12px 18px;font:inherit;cursor:pointer;text-decoration:none;display:inline-block}.share-tip{color:#81796c;font-size:14px;line-height:1.7}.activity-detail{line-height:1.8;overflow-wrap:anywhere}.activity-detail h2{line-height:1.4}.detail-path{white-space:pre-wrap}.activity-detail li{margin:10px 0}@media(max-width:480px){.share-body{padding:14px}.share-dialog header{padding:14px 18px}.share-link button{padding:10px;white-space:nowrap}}
+
+.shared-activity-notice{padding:14px 18px;margin:12px 0;background:#fff2e3;border-radius:12px;color:#754129;display:flex;align-items:center;justify-content:space-between;gap:10px}.shared-activity-notice button{border:1px solid #d94d2e;border-radius:18px;color:#b94328;background:white;padding:7px 12px;cursor:pointer;white-space:nowrap}.shared-activity-card{scroll-margin-top:150px;outline:2px solid #e99156}
+/* Keep the poster and sharing actions within the available screen height. */
+.share-dialog{box-sizing:border-box;width:min(94vw,560px);max-height:96dvh}
+.share-dialog header{padding:12px 18px;font-size:19px}
+.share-dialog header button{width:34px;height:34px;font-size:25px;flex-shrink:0}
+.share-dialog .share-body{padding:12px 16px}
+.share-poster{width:auto;max-width:100%;max-height:calc(96dvh - 250px);height:auto;object-fit:contain;margin:0 auto;border-radius:12px}
+.share-link{margin:12px 0 8px}
+.share-link input{padding:10px;font-size:13px}
+.share-link button,.share-save{padding:10px 14px;font-size:14px;line-height:20px;white-space:nowrap}
+.share-tip{font-size:12px;line-height:1.5;margin:9px 0 0}
+@media(max-height:500px){.share-dialog header{padding:7px 14px}.share-dialog .share-body{padding:8px 12px}.share-poster{max-height:calc(96dvh - 210px)}.share-link{margin-top:8px}.share-tip{margin-top:6px}}
+/* Match the reference's compact dialog and poster proportions. */
+.share-dialog{width:min(440px,calc(100vw - 32px));border-radius:16px}
+.share-dialog header{padding:12px 16px;font-size:16px}
+.share-dialog .share-body{padding:14px 20px 16px}
+.share-poster{max-width:min(100%,360px);max-height:calc(96dvh - 254px);border-radius:10px}
+@media(max-width:480px){.share-dialog{width:calc(100vw - 32px)}.share-dialog .share-body{padding:12px 14px 14px}}
+@media(max-height:500px){.share-dialog .share-body{padding:8px 12px}.share-poster{max-height:calc(96dvh - 210px)}}
+.share-poster-frame{position:relative;width:fit-content;max-width:100%;margin:0 auto;border-radius:10px;overflow:hidden;outline-offset:3px}
+.share-poster-frame:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent 65%,#20180f66);opacity:0;transition:opacity .18s}
+.share-poster-tools{position:absolute;bottom:12px;right:12px;z-index:1;display:flex;gap:8px;opacity:0;pointer-events:none;transform:translateY(4px);transition:opacity .18s,transform .18s}
+.share-poster-frame:hover:after,.share-poster-frame:focus-within:after,.share-poster-frame.show-tools:after{opacity:1}
+.share-poster-frame:hover .share-poster-tools,.share-poster-frame:focus-within .share-poster-tools,.share-poster-frame.show-tools .share-poster-tools{opacity:1;pointer-events:auto;transform:none}
+.share-poster-tools button,.share-poster-tools .share-save{display:inline-flex;align-items:center;justify-content:center;gap:5px;background:#28201680;border:1px solid #ffffffb3;border-radius:7px;color:white;backdrop-filter:blur(8px);padding:8px 12px;min-height:38px;font:500 13px/20px sans-serif;text-decoration:none;cursor:pointer;white-space:nowrap}
+.share-poster-tools button:hover,.share-poster-tools .share-save:hover{background:#282016b3}
+@media(pointer:coarse){.share-poster-tools button,.share-poster-tools .share-save{min-height:44px}.share-poster-frame{touch-action:manipulation}}
+@media(prefers-reduced-motion:reduce){.share-poster-tools,.share-poster-frame:after{transition:none}}

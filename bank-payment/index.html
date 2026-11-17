@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN" data-section="bank" data-bank-page="1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#fff7ed" />
+    <meta name="description" content="小泽羊毛 - 工商、建设、招商、交行等各大银行微信立减金、支付宝红包与支付满减活动汇总。" />
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+    <title>各大银行支付立减金与满减攻略 - 小泽羊毛</title>
+    <!-- 引入核心样式表 -->
+    <link rel="stylesheet" href="/assets/style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <!-- 顶部紧凑导航栏 -->
+      <header class="compact-header" id="top">
+        <nav class="nav" aria-label="主导航">
+          <a href="/" class="brand" aria-label="小泽羊毛首页">
+            <img src="/assets/logo.svg" alt="小泽羊毛Logo" class="logo" width="38" height="38" />
+            <span class="brand-name">小泽羊毛</span>
+          </a>
+
+          <!-- 模式切换栏 (吃喝玩乐 / 银行支付 / 电商购物 / 出行住宿) -->
+          <div class="mode-bar-wrap" id="mode-bar-wrap">
+            <div class="mode-switch" role="tablist" aria-label="内容类型">
+              <a href="/" role="tab" id="tab-life" class="mode-btn" data-mode="life" aria-selected="false" aria-controls="panel-life">吃喝玩乐</a>
+              <a href="/bank-payment/" role="tab" id="tab-bank" class="mode-btn" data-mode="bank" aria-current="page" aria-selected="true" aria-controls="panel-bank">银行支付</a>
+              <a href="/shopping/" role="tab" id="tab-double11" class="mode-btn" data-mode="double11" aria-selected="false" aria-controls="panel-life">电商购物</a>
+              <a href="/travel/" role="tab" id="tab-brand" class="mode-btn" data-mode="brand" aria-selected="false" aria-controls="panel-life">出行住宿</a>
+            </div>
+          </div>
+
+          <!-- 右侧操作项 -->
+          <div class="header-actions">
+            <a href="/add-to-home.html" class="home-guide-link">添加到手机桌面</a>
+            <button type="button" class="wechat-open" id="group-open-top" aria-haspopup="dialog">加入交流群</button>
+          </div>
+        </nav>
+      </header>
+
+      <!-- 当前版块主标题 -->
+      <h1 class="section-heading" id="section-heading">银行支付优惠</h1>
+
+      <!-- 工具栏：搜索与分类标签 -->
+      <section class="toolbar" aria-label="筛选与搜索">
+        <div class="search-row">
+          <input
+            type="search"
+            class="search-input"
+            id="search-input"
+            placeholder="搜索平台 / 优惠关键词..."
+            autocomplete="off"
+            enterkeyhint="search"
+            aria-label="搜索"
+          />
+        </div>
+
+        <!-- 动态分类标签 (由 app.js 根据当前板块自动填充与高亮) -->
+        <div class="categories" id="categories" role="toolbar" aria-label="分类筛选">
+          <button type="button" class="category active" data-category="全部" aria-pressed="true">全部</button>
+        </div>
+
+        <div class="category-hint" aria-hidden="true">
+          <span>左右滑动查看更多分类</span>
+          <span class="arrow">→</span>
+        </div>
+
+        <!-- 银行模式专属说明提示 -->
+        <p class="panel-note" id="bank-note">
+          银行支付优惠仅供参考，报名/领取/到账规则以各大银行、云闪付、支付宝、微信等官方实际活动页面为准。
+        </p>
+      </section>
+
+      <!-- 银行地区筛选器 (银行模式下使用) -->
+      <div class="region-filter" id="region-filter" hidden>
+        <div class="region-controls">
+          <label for="bank-region">适用地区</label>
+          <select id="bank-region" aria-describedby="region-note"></select>
+          <button type="button" id="reset-bank-region">重置</button>
+        </div>
+        <span id="region-result-count" role="status" aria-live="polite"></span>
+        <p id="region-note">仅列出现有活动涉及的城市和地区，点击重置取消地区筛选。</p>
+      </div>
+
+      <p id="search-summary" class="search-summary" role="status" aria-live="polite" hidden></p>
+
+      <!-- 吃喝玩乐 / 电商 / 出行优惠网格面板 -->
+      <section id="panel-life" role="tabpanel" aria-labelledby="tab-life">
+        <h2 class="result-heading" id="life-results" hidden>优惠活动</h2>
+        <div class="grid" id="coupon-grid">
+          <!-- 默认占位卡片 (app.js 加载后将从 coupons.js 动态渲染) -->
+          <article class="coupon" data-activity-id="coupon-001">
+            <div class="coupon-top">
+              <div class="platform">
+                <img src="/assets/platforms/meituan.webp" alt="美团" class="platform-icon" width="36" height="36" />
+                美团外卖大额券
+              </div>
+              <span class="tag">热门推荐</span>
+            </div>
+            <p class="desc">大额满减神券天天领，天天外卖立减省钱</p>
+            <div class="coupon-code">
+              <span>口令：</span>
+              <code>http:/💰x5YTFiODFmZTM💰</code>
+            </div>
+            <div class="coupon-bottom">
+              <div class="coupon-action">
+                <span class="copy-feedback" role="status" aria-live="polite"></span>
+                <button type="button" class="copy" data-code="http:/💰x5YTFiODFmZTM💰" data-platform="美团">复制口令</button>
+              </div>
+            </div>
+            <button type="button" class="share-button" data-share-id="coupon-001">↗ 分享</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- 银行支付优惠面板 -->
+      <section id="panel-bank" role="tabpanel" aria-labelledby="tab-bank" hidden>
+        <h2 class="result-heading" id="bank-results" hidden>银行支付</h2>
+        <div class="bank-grid" id="bank-grid"></div>
+      </section>
+
+      <!-- 底部版权与说明 -->
+      <footer>
+        <button type="button" class="wechat-footer-button" id="group-open-footer" aria-haspopup="dialog">
+          加入小泽羊毛线报群
+        </button>
+        <span class="warn">
+          优惠活动与立减金规则仅供参考，请以各平台 / 银行 / 支付官方最终展示为准。
+        </span>
+        <br />
+        <a href="/add-to-home.html">添加到手机桌面</a> ·
+        <a href="/about.html">关于本站</a> ·
+        <a href="/privacy.html">隐私说明</a>
+        <br />
+        小泽羊毛 · 把省下来的钱，留给更重要的事
+      </footer>
+    </main>
+
+    <!-- 加入社群对话框 (站长可在下方修改群号或二维码图片) -->
+    <dialog class="wechat-dialog" id="group-dialog" aria-labelledby="group-dialog-title">
+      <div class="wechat-dialog-header">
+        <h2 id="group-dialog-title">加入小泽羊毛交流群</h2>
+        <button type="button" id="group-close" aria-label="关闭">×</button>
+      </div>
+      <div class="wechat-content">
+        <p>欢迎加入小泽羊毛线报群，每天同步最新外卖立减券、银行立减金与大额补贴！</p>
+        <div style="background:#fff7ed; padding:12px; border-radius:8px; margin:12px 0; border:1px dashed #ff8a1f;">
+          <p style="margin:0 0 6px 0; font-weight:600;">小泽羊毛官方QQ/微信群：</p>
+          <p style="margin:0; font-size:16px;">
+            群号：<strong>300260356</strong>
+            <button type="button" id="copy-group-number" style="margin-left:8px; padding:4px 8px; font-size:12px; background:#ff8a1f; color:#fff; border:none; border-radius:4px; cursor:pointer;">复制群号</button>
+          </p>
+        </div>
+        <p id="group-copy-status" role="status" aria-live="polite" style="color:#1d9b68; font-size:13px;"></p>
+        <p style="color:#888; font-size:12px; margin-top:8px;">提示：如微信加群频繁，请先复制群号在搜索栏添加或留意站长更新。</p>
+      </div>
+    </dialog>
+
+    <!-- 核心业务脚本 -->
+    <script src="/assets/share.js"></script>
+    <script src="/assets/coupons.js"></script>
+    <script src="/assets/banks.js"></script>
+    <script src="/assets/app.js"></script>
+  </body>
+</html>

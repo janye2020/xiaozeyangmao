@@ -1,0 +1,3 @@
+# Cloudflare Pages 友好路由跳转规则
+/life    /    301
+/bank    /bank-payment/    301
