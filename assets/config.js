@@ -30,6 +30,9 @@ window.SITE_CONFIG = {
   // 3. 核心平台推广口令（在此填入您的淘客、美团、京粉等推广口令）
   // --------------------------------------------------------------------------
   codes: {
+    // ===【AI代充 / 会员订阅类】===
+    ai_charge: "https://nf.video/VBCKk",             // 银河录像局 · ChatGPT/Claude会员代充推广短链
+
     // ===【美团 / 饿了么 外卖生活类】===
     meituan_waimai: "http:/💰x5YTFiODFmZTM💰",       // 美团外卖大额天天神券口令
     meituan_card: "http:/💰ycMTM1YzIzMmU💰",         // 美团神券包/9.9元年卡口令
@@ -42,10 +45,10 @@ window.SITE_CONFIG = {
     taobao_general: "",                             // 淘宝百亿补贴通用口令
 
     // ===【京东 电商与外卖类】===
-    jd_waimai: "！M06Nx0HL7VunCqHG！ CA1393",       // 京东外卖优惠口令
-    jd_one_cent: "！Z6Y9PFxeGgB2NFby！ MF8555",     // 京东新老用户1分购口令
-    jd_limited_sale: "！O2GVr2DZKg2DsER0！ ZH9112", // 京东30元限时优惠会场口令
-    jd_month_card: "！CFG2Y5kl3vPmYy65！ MF8555",   // 京东外卖月卡口令
+    jd_waimai: "https://u.jd.com/ogAzZ5z",          // 京东外卖优惠口令/短链
+    jd_one_cent: "https://u.jd.com/oOEIZw5",        // 京东新老用户1分购口令/短链
+    jd_limited_sale: "https://u.jd.com/ogAzZ5z",    // 京东30元限时优惠会场口令/短链
+    jd_month_card: "",                              // 京东外卖月卡口令
     jd_general: "",                                 // 京东通用返利口令
 
     // ===【出行 / 打车 / 加油类】===

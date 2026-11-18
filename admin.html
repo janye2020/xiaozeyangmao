@@ -187,6 +187,16 @@
           </div>
         </div>
 
+                <!-- 模块：AI代充与会员订阅 -->
+        <div class="section-box">
+          <h2>🤖 AI代充与会员订阅（ChatGPT / Claude / 流媒体）</h2>
+          <div class="form-group">
+            <label for="cfg_ai_charge">银河录像局 · 官方返利推广短链</label>
+            <input type="url" id="cfg_ai_charge" placeholder="例如：https://nf.video/VBCKk" />
+            <div class="hint">全站【AI代充】分类下的卡片直达领取链接（点击直接打开注册/购买）</div>
+          </div>
+        </div>
+
         <!-- 模块二：美团 & 饿了么 外卖优惠 -->
         <div class="section-box">
           <h2>🛵 美团 & 饿了么（外卖生活）</h2>
@@ -313,7 +323,7 @@
         document.getElementById('cfg_notice').value = comm.notice || '';
 
         const codeKeys = [
-          'meituan_waimai', 'meituan_card', 'eleme_waimai',
+          'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
           'taobao_shangou', 'taobao_supermarket', 'taobao_general',
           'jd_waimai', 'jd_one_cent', 'jd_limited_sale', 'jd_month_card',
           'didi', 'unicom_bill'
@@ -333,7 +343,7 @@
 
         const codes = {};
         const codeKeys = [
-          'meituan_waimai', 'meituan_card', 'eleme_waimai',
+          'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
           'taobao_shangou', 'taobao_supermarket', 'taobao_general',
           'jd_waimai', 'jd_one_cent', 'jd_limited_sale', 'jd_month_card',
           'didi', 'unicom_bill'
@@ -396,7 +406,7 @@ window.SITE_CONFIG = {
         const notice = document.getElementById('cfg_notice').value.trim();
         const codes = {};
         const codeKeys = [
-          'meituan_waimai', 'meituan_card', 'eleme_waimai',
+          'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
           'taobao_shangou', 'taobao_supermarket', 'taobao_general',
           'jd_waimai', 'jd_one_cent', 'jd_limited_sale', 'jd_month_card',
           'didi', 'unicom_bill'

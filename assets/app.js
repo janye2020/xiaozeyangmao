@@ -25,7 +25,8 @@
     'shopping-taobao-flash-sale-redpacket': codes.taobao_shangou,
     'shopping-taobao-billion-subsidy': codes.taobao_general,
     'shopping-taobao-tmall-supermarket': codes.taobao_supermarket,
-    'phone-unicom-bill-voucher': codes.unicom_bill
+    'phone-unicom-bill-voucher': codes.unicom_bill,
+    'coupon-050': codes.ai_charge
   };
 
   // 遍历所有卡片，将站长在 config.js 中配置的口令自动注入
@@ -64,6 +65,9 @@
       }
     } else if (item.platform === '饿了么' && codes.eleme_waimai) {
       item.code = codes.eleme_waimai;
+    } else if ((item.category === 'AI代充' || item.platform === '银河录像局' || item.platform === 'ChatGPT') && codes.ai_charge) {
+      item.code = codes.ai_charge;
+      item.link = true;
     } else if ((item.platform === '滴滴' || title.includes('滴滴')) && codes.didi) {
       item.code = codes.didi;
     }
