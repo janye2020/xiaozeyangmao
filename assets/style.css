@@ -425,7 +425,8 @@
     
 
 /* --- 卡片分享与操作补充样式 --- */
-.share-button{display:block;margin:14px 0 0 auto;border:1px solid #e5d9cc;border-radius:20px;padding:7px 15px;background:#fffaf4;color:#985033;font:inherit;font-size:13px;cursor:pointer}.share-button:hover{background:#f9e8d8}.share-dialog{width:min(94vw,680px);max-height:92dvh;padding:0;border:1px solid #e6dfd4;border-radius:22px;background:#fffcf7;color:#292721;box-shadow:0 22px 90px #0004}.share-dialog::backdrop{background:#20180f88}.share-dialog header{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:#fffcf7;border-bottom:1px solid #eee4d8;font-size:21px}.share-dialog header button{border:0;border-radius:50%;background:#f0e9df;width:40px;height:40px;font-size:28px;cursor:pointer}.share-body{padding:20px 24px}.share-poster{display:block;width:100%;height:auto;border-radius:16px}.share-link{display:flex;gap:8px;margin:18px 0 12px}.share-link input{min-width:0;flex:1;border:1px solid #ded6c9;border-radius:9px;padding:12px;font-size:14px}.share-link button,.share-save,.activity-detail>button{border:0;border-radius:9px;background:#d94d2e;color:white;padding:12px 18px;font:inherit;cursor:pointer;text-decoration:none;display:inline-block}.share-tip{color:#81796c;font-size:14px;line-height:1.7}.activity-detail{line-height:1.8;overflow-wrap:anywhere}.activity-detail h2{line-height:1.4}.detail-path{white-space:pre-wrap}.activity-detail li{margin:10px 0}@media(max-width:480px){.share-body{padding:14px}.share-dialog header{padding:14px 18px}.share-link button{padding:10px;white-space:nowrap}}
+.coupon-top-actions{display:flex;align-items:center;gap:6px;flex:0 0 auto;}
+.share-button{display:inline-flex;align-items:center;justify-content:center;gap:3px;margin:0;border:1px solid #ffd8af;border-radius:6px;padding:4px 8px;background:#fffaf4;color:#ea580c;font:inherit;font-size:12px;font-weight:600;line-height:1.2;cursor:pointer;white-space:nowrap;transition:all .15s ease}.share-button:hover{background:#ffedd5;color:#c2410c;border-color:#f97316;transform:translateY(-1px)}.share-button:active{transform:translateY(0)}.share-dialog{width:min(94vw,680px);max-height:92dvh;padding:0;border:1px solid #e6dfd4;border-radius:22px;background:#fffcf7;color:#292721;box-shadow:0 22px 90px #0004}.share-dialog::backdrop{background:#20180f88}.share-dialog header{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:#fffcf7;border-bottom:1px solid #eee4d8;font-size:21px}.share-dialog header button{border:0;border-radius:50%;background:#f0e9df;width:40px;height:40px;font-size:28px;cursor:pointer}.share-body{padding:20px 24px}.share-poster{display:block;width:100%;height:auto;border-radius:16px}.share-link{display:flex;gap:8px;margin:18px 0 12px}.share-link input{min-width:0;flex:1;border:1px solid #ded6c9;border-radius:9px;padding:12px;font-size:14px}.share-link button,.share-save,.activity-detail>button{border:0;border-radius:9px;background:#d94d2e;color:white;padding:12px 18px;font:inherit;cursor:pointer;text-decoration:none;display:inline-block}.share-tip{color:#81796c;font-size:14px;line-height:1.7}.activity-detail{line-height:1.8;overflow-wrap:anywhere}.activity-detail h2{line-height:1.4}.detail-path{white-space:pre-wrap}.activity-detail li{margin:10px 0}@media(max-width:480px){.share-body{padding:14px}.share-dialog header{padding:14px 18px}.share-link button{padding:10px;white-space:nowrap}}
 
 .shared-activity-notice{padding:14px 18px;margin:12px 0;background:#fff2e3;border-radius:12px;color:#754129;display:flex;align-items:center;justify-content:space-between;gap:10px}.shared-activity-notice button{border:1px solid #d94d2e;border-radius:18px;color:#b94328;background:white;padding:7px 12px;cursor:pointer;white-space:nowrap}.shared-activity-card{scroll-margin-top:150px;outline:2px solid #e99156}
 /* Keep the poster and sharing actions within the available screen height. */
@@ -478,4 +479,44 @@
   font-weight: 800;
   font-size: 20px;
   box-shadow: 0 4px 10px rgba(255, 85, 0, 0.25);
+}
+
+/* 卡片右上角分享按钮与标签容器 */
+.coupon-top-actions {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+}
+
+.coupon-top-actions .share-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  border: 1px solid #fed7aa !important;
+  border-radius: 6px !important;
+  padding: 4px 8px !important;
+  background: #fffaf4 !important;
+  color: #ea580c !important;
+  font: inherit !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  transition: all .15s ease !important;
+}
+
+.coupon-top-actions .share-button:hover {
+  background: #ffedd5 !important;
+  color: #c2410c !important;
+  border-color: #f97316 !important;
+  transform: translateY(-1px) !important;
+}
+
+.coupon-top-actions .tag {
+  margin: 0 !important;
 }
