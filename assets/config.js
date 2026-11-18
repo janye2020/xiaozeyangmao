@@ -21,7 +21,7 @@ window.SITE_CONFIG = {
   // --------------------------------------------------------------------------
   community: {
     groupName: "小泽羊毛线报交流群",
-    groupNumber: "300260356", // 您的QQ群号、微信号或公众号
+    groupNumber: "1128491901", // 您的QQ群号
     groupLink: "https://yb.tencent.com/gp/i/yshGvLcbxRMV", // 点击直接加群的链接（若无请留空 ""）
     notice: "欢迎加入小泽羊毛线报群，每天同步最新外卖立减券、银行立减金与大额补贴！"
   },

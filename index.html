@@ -139,22 +139,32 @@
     </main>
 
     <!-- 加入社群对话框 (站长可在下方修改群号或二维码图片) -->
+    <!-- 加入社群对话框 (已配置二维码展示与一键复制群号) -->
     <dialog class="wechat-dialog" id="group-dialog" aria-labelledby="group-dialog-title">
       <div class="wechat-dialog-header">
         <h2 id="group-dialog-title">加入小泽羊毛交流群</h2>
         <button type="button" id="group-close" aria-label="关闭">×</button>
       </div>
       <div class="wechat-content">
-        <p>欢迎加入小泽羊毛线报群，每天同步最新外卖立减券、银行立减金与大额补贴！</p>
-        <div style="background:#fff7ed; padding:12px; border-radius:8px; margin:12px 0; border:1px dashed #ff8a1f;">
-          <p style="margin:0 0 6px 0; font-weight:600;">小泽羊毛官方QQ/微信群：</p>
-          <p style="margin:0; font-size:16px;">
-            群号：<strong>300260356</strong>
-            <button type="button" id="copy-group-number" style="margin-left:8px; padding:4px 8px; font-size:12px; background:#ff8a1f; color:#fff; border:none; border-radius:4px; cursor:pointer;">复制群号</button>
+        <p style="margin: 4px 0 10px; font-size: 13px; color: #666;">
+          欢迎加入小泽羊毛线报群，每天同步最新外卖神券、银行立减金与大额补贴！
+        </p>
+
+        <!-- 交流群专属二维码展示卡片 -->
+        <div style="background: #fff; padding: 10px; border-radius: 12px; border: 1px solid #ebeff5; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 12px;">
+          <img src="/assets/group-qrcode.jpg" alt="小泽羊毛QQ群二维码" style="max-width: 200px; width: 100%; height: auto; border-radius: 8px; margin: 0 auto; display: block;" />
+          <p style="margin: 8px 0 0; font-size: 12px; color: #888;">📱 截图或长按保存图片，使用手机 QQ 扫码加群</p>
+        </div>
+
+        <div style="background:#fff7ed; padding:10px 12px; border-radius:8px; margin:0 0 10px; border:1px dashed #ff8a1f;">
+          <p style="margin:0 0 6px 0; font-weight:600; font-size:13px; color:#e8720a;">小泽羊毛官方QQ群：</p>
+          <p style="margin:0; font-size:15px; display:flex; align-items:center; justify-content:center; gap:8px;">
+            <span>群号：<strong>300260356</strong></span>
+            <button type="button" id="copy-group-number" style="padding:4px 10px; font-size:12px; background:linear-gradient(135deg, #ff8a1f, #ff5500); color:#fff; border:none; border-radius:6px; cursor:pointer;">复制群号</button>
           </p>
         </div>
-        <p id="group-copy-status" role="status" aria-live="polite" style="color:#1d9b68; font-size:13px;"></p>
-        <p style="color:#888; font-size:12px; margin-top:8px;">提示：如微信加群频繁，请先复制群号在搜索栏添加或留意站长更新。</p>
+        <p id="group-copy-status" role="status" aria-live="polite" style="color:#1d9b68; font-size:13px; margin:2px 0; min-height:16px;"></p>
+        <p style="color:#888; font-size:12px; margin-top:4px;">提示：支持直接扫码加群，或复制群号在搜索栏添加</p>
       </div>
     </dialog>
 

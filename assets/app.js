@@ -77,6 +77,10 @@
   window.addEventListener('DOMContentLoaded', () => {
     const comm = cfg.community;
     if (!comm) return;
+    if (comm.groupQr) {
+      const qrImg = document.querySelector('#group-dialog img');
+      if (qrImg) qrImg.src = comm.groupQr;
+    }
     if (comm.groupNumber) {
       document.querySelectorAll('#group-dialog strong, .group-number-val').forEach(el => {
         el.textContent = comm.groupNumber;
