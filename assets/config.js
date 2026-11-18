@@ -64,10 +64,22 @@ window.SITE_CONFIG = {
     jd_month_card: "",                              // 京东外卖月卡口令
     jd_general: "",                                 // 京东通用返利口令
 
-    // ===【出行 / 打车 / 加油类】===
-    didi: "",                                       // 滴滴打车立减口令或领券链接
-    gaode: "",                                      // 高德打车券口令
-    oil: "",                                        // 加油优惠满减口令
+    // ===【出行 / 打车 / 机票火车票类】===
+    travel_meituan_flight: "http:/💰qeZjAyYmM3MTM💰",                               // 美团机票优惠券口令
+    travel_meituan_train: "http:/💰p8MzJlYzYyN2Y💰",                                // 美团火车票特惠口令
+    travel_didi_flight: "https://www.yunkahulian.com/tg/pages/didi/index?sid=YK0000881364", // 滴滴机票优惠券链接
+    travel_didi_ride: "https://kurl05.cn/t9e8a7",                                    // 滴滴打车优惠券链接
+    travel_huaxiaozhu_ride: "https://kurl04.cn/t9e8Nz",                              // 花小猪打车优惠券链接
+    travel_tongcheng_ride: "https://s.ly.com/nXaJWR6xF",                             // 同程打车优惠券链接
+    didi: "https://kurl05.cn/t9e8a7",                                               // 滴滴打车通用备用
+    gaode: "",                                                                      // 高德打车券口令
+    oil: "",                                                                        // 加油优惠满减口令
+
+    // ===【住宿 / 酒店民宿特惠类】===
+    hotel_meituan: "http:/💰0oYmQ1MDQzNjA💰",                                        // 美团酒店优惠券口令
+    hotel_tongcheng: "https://kurl05.cn/t9eGLY",                                     // 同程酒店优惠券链接
+    hotel_fliggy: "https://a.feizhu.com/3c10Eg",                                     // 飞猪酒店优惠券链接
+    hotel_didi: "https://kurl04.cn/t9eGy2",                                          // 滴滴酒店优惠券链接
 
     // ===【通信 / 话费流量类】===
     unicom_bill: "",                                // 中国联通积分/话费口令

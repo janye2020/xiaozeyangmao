@@ -246,6 +246,56 @@
           </div>
         </div>
 
+        <!-- 模块：出行打车与机票火车票 -->
+        <div class="card">
+          <div class="card-title">🚗 出行 · 打车、机票与火车票推广配置</div>
+          <div class="form-group">
+            <label for="cfg_travel_meituan_flight">美团 · 机票优惠券口令</label>
+            <input type="text" id="cfg_travel_meituan_flight" placeholder="例如：http:/💰qeZjAyYmM3MTM💰" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_travel_meituan_train">美团 · 火车票特惠口令</label>
+            <input type="text" id="cfg_travel_meituan_train" placeholder="例如：http:/💰p8MzJlYzYyN2Y💰" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_travel_didi_flight">滴滴 · 机票优惠券推广链接</label>
+            <input type="url" id="cfg_travel_didi_flight" placeholder="例如：https://www.yunkahulian.com/tg/pages/didi/index?sid=YK0000881364" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_travel_didi_ride">滴滴 · 打车优惠券专属短链</label>
+            <input type="url" id="cfg_travel_didi_ride" placeholder="例如：https://kurl05.cn/t9e8a7" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_travel_huaxiaozhu_ride">花小猪 · 打车优惠券专属短链</label>
+            <input type="url" id="cfg_travel_huaxiaozhu_ride" placeholder="例如：https://kurl04.cn/t9e8Nz" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_travel_tongcheng_ride">同程 · 打车优惠券专属链接</label>
+            <input type="url" id="cfg_travel_tongcheng_ride" placeholder="例如：https://s.ly.com/nXaJWR6xF" />
+          </div>
+        </div>
+
+        <!-- 模块：酒店与民宿住宿特惠 -->
+        <div class="card">
+          <div class="card-title">🏨 住宿 · 酒店与民宿特惠推广配置</div>
+          <div class="form-group">
+            <label for="cfg_hotel_meituan">美团 · 酒店优惠券口令</label>
+            <input type="text" id="cfg_hotel_meituan" placeholder="例如：http:/💰0oYmQ1MDQzNjA💰" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_hotel_tongcheng">同程 · 酒店优惠券专属短链</label>
+            <input type="url" id="cfg_hotel_tongcheng" placeholder="例如：https://kurl05.cn/t9eGLY" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_hotel_fliggy">飞猪 · 酒店优惠券专属链接</label>
+            <input type="url" id="cfg_hotel_fliggy" placeholder="例如：https://a.feizhu.com/3c10Eg" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_hotel_didi">滴滴 · 酒店优惠券专属短链</label>
+            <input type="url" id="cfg_hotel_didi" placeholder="例如：https://kurl04.cn/t9eGy2" />
+          </div>
+        </div>
+
         <!-- 模块：AI代充与会员订阅 -->
         <div class="section-box">
           <h2>🤖 AI代充与会员订阅（ChatGPT / Claude / 流媒体）</h2>
@@ -412,7 +462,9 @@
 
         const codeKeys = [
           'food_diancan', 'food_kfc', 'food_luckin', 'food_cotti', 'food_starbucks',
-          'life_taopiaopiao_bag', 'life_taopiaopiao_hb', 'life_movie', 'life_express', 'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
+          'life_taopiaopiao_bag', 'life_taopiaopiao_hb', 'life_movie', 'life_express',
+          'travel_meituan_flight', 'travel_meituan_train', 'travel_didi_flight', 'travel_didi_ride', 'travel_huaxiaozhu_ride', 'travel_tongcheng_ride',
+          'hotel_meituan', 'hotel_tongcheng', 'hotel_fliggy', 'hotel_didi', 'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
           'taobao_shangou', 'taobao_supermarket', 'taobao_general',
           'jd_waimai', 'jd_one_cent', 'jd_limited_sale', 'jd_month_card',
           'didi', 'unicom_bill'
@@ -433,7 +485,9 @@
         const codes = {};
         const codeKeys = [
           'food_diancan', 'food_kfc', 'food_luckin', 'food_cotti', 'food_starbucks',
-          'life_taopiaopiao_bag', 'life_taopiaopiao_hb', 'life_movie', 'life_express', 'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
+          'life_taopiaopiao_bag', 'life_taopiaopiao_hb', 'life_movie', 'life_express',
+          'travel_meituan_flight', 'travel_meituan_train', 'travel_didi_flight', 'travel_didi_ride', 'travel_huaxiaozhu_ride', 'travel_tongcheng_ride',
+          'hotel_meituan', 'hotel_tongcheng', 'hotel_fliggy', 'hotel_didi', 'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
           'taobao_shangou', 'taobao_supermarket', 'taobao_general',
           'jd_waimai', 'jd_one_cent', 'jd_limited_sale', 'jd_month_card',
           'didi', 'unicom_bill'
@@ -497,7 +551,9 @@ window.SITE_CONFIG = {
         const codes = {};
         const codeKeys = [
           'food_diancan', 'food_kfc', 'food_luckin', 'food_cotti', 'food_starbucks',
-          'life_taopiaopiao_bag', 'life_taopiaopiao_hb', 'life_movie', 'life_express', 'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
+          'life_taopiaopiao_bag', 'life_taopiaopiao_hb', 'life_movie', 'life_express',
+          'travel_meituan_flight', 'travel_meituan_train', 'travel_didi_flight', 'travel_didi_ride', 'travel_huaxiaozhu_ride', 'travel_tongcheng_ride',
+          'hotel_meituan', 'hotel_tongcheng', 'hotel_fliggy', 'hotel_didi', 'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
           'taobao_shangou', 'taobao_supermarket', 'taobao_general',
           'jd_waimai', 'jd_one_cent', 'jd_limited_sale', 'jd_month_card',
           'didi', 'unicom_bill'

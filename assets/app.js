@@ -35,7 +35,17 @@
     'life-taopiaopiao-bag': codes.life_taopiaopiao_bag,
     'life-taopiaopiao-redpacket': codes.life_taopiaopiao_hb,
     'life-movie-discount': codes.life_movie,
-    'life-express-discount': codes.life_express
+    'life-express-discount': codes.life_express,
+    'travel-meituan-flight': codes.travel_meituan_flight,
+    'travel-meituan-train': codes.travel_meituan_train,
+    'travel-didi-flight': codes.travel_didi_flight,
+    'travel-didi-ride': codes.travel_didi_ride,
+    'travel-huaxiaozhu-ride': codes.travel_huaxiaozhu_ride,
+    'travel-tongcheng-ride': codes.travel_tongcheng_ride,
+    'hotel-meituan': codes.hotel_meituan,
+    'hotel-tongcheng': codes.hotel_tongcheng,
+    'hotel-fliggy': codes.hotel_fliggy,
+    'hotel-didi': codes.hotel_didi
   };
 
   // 遍历所有卡片，将站长在 config.js 中配置的口令自动注入
