@@ -225,6 +225,27 @@
           </div>
         </div>
 
+        <!-- 模块：生活与影音娱乐/快递 -->
+        <div class="card">
+          <div class="card-title">🍿 生活 · 电影票与快递寄件推广链接</div>
+          <div class="form-group">
+            <label for="cfg_life_taopiaopiao_bag">淘票票 · 买券包专属推广短链</label>
+            <input type="url" id="cfg_life_taopiaopiao_bag" placeholder="例如：https://dwz.cn/iD313Omm" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_life_taopiaopiao_hb">淘票票 · 电影红包/优惠券专属短链</label>
+            <input type="url" id="cfg_life_taopiaopiao_hb" placeholder="例如：https://dwz.cn/IQmlQFKT" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_life_movie">特价电影 · 5折在线选座特惠短链</label>
+            <input type="url" id="cfg_life_movie" placeholder="例如：https://kurl05.cn/t9xWT6" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_life_express">特价寄快递 · 快递优惠专属短链</label>
+            <input type="url" id="cfg_life_express" placeholder="例如：https://kurl05.cn/t9xWW8" />
+          </div>
+        </div>
+
         <!-- 模块：AI代充与会员订阅 -->
         <div class="section-box">
           <h2>🤖 AI代充与会员订阅（ChatGPT / Claude / 流媒体）</h2>
@@ -390,7 +411,8 @@
         document.getElementById('cfg_notice').value = comm.notice || '';
 
         const codeKeys = [
-          'food_diancan', 'food_kfc', 'food_luckin', 'food_cotti', 'food_starbucks', 'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
+          'food_diancan', 'food_kfc', 'food_luckin', 'food_cotti', 'food_starbucks',
+          'life_taopiaopiao_bag', 'life_taopiaopiao_hb', 'life_movie', 'life_express', 'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
           'taobao_shangou', 'taobao_supermarket', 'taobao_general',
           'jd_waimai', 'jd_one_cent', 'jd_limited_sale', 'jd_month_card',
           'didi', 'unicom_bill'
@@ -410,7 +432,8 @@
 
         const codes = {};
         const codeKeys = [
-          'food_diancan', 'food_kfc', 'food_luckin', 'food_cotti', 'food_starbucks', 'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
+          'food_diancan', 'food_kfc', 'food_luckin', 'food_cotti', 'food_starbucks',
+          'life_taopiaopiao_bag', 'life_taopiaopiao_hb', 'life_movie', 'life_express', 'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
           'taobao_shangou', 'taobao_supermarket', 'taobao_general',
           'jd_waimai', 'jd_one_cent', 'jd_limited_sale', 'jd_month_card',
           'didi', 'unicom_bill'
@@ -473,7 +496,8 @@ window.SITE_CONFIG = {
         const notice = document.getElementById('cfg_notice').value.trim();
         const codes = {};
         const codeKeys = [
-          'food_diancan', 'food_kfc', 'food_luckin', 'food_cotti', 'food_starbucks', 'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
+          'food_diancan', 'food_kfc', 'food_luckin', 'food_cotti', 'food_starbucks',
+          'life_taopiaopiao_bag', 'life_taopiaopiao_hb', 'life_movie', 'life_express', 'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
           'taobao_shangou', 'taobao_supermarket', 'taobao_general',
           'jd_waimai', 'jd_one_cent', 'jd_limited_sale', 'jd_month_card',
           'didi', 'unicom_bill'

@@ -37,6 +37,12 @@ window.SITE_CONFIG = {
     food_cotti: "https://kzurl18.cn/tHrC3M",          // 库迪咖啡推广短链
     food_starbucks: "https://kurl05.cn/t9xKgz",      // 星巴克特惠点餐推广短链
 
+    // ===【生活 · 淘票票/电影票与特价寄快递】===
+    life_taopiaopiao_bag: "https://dwz.cn/iD313Omm",    // 淘票票买券包推广短链
+    life_taopiaopiao_hb: "https://dwz.cn/IQmlQFKT",     // 淘票票优惠券红包推广短链
+    life_movie: "https://kurl05.cn/t9xWT6",             // 特价电影票推广短链
+    life_express: "https://kurl05.cn/t9xWW8",           // 特价寄快递推广短链
+
     // ===【AI代充 / 会员订阅类】===
     ai_charge: "https://nf.video/VBCKk",             // 银河录像局 · ChatGPT/Claude会员代充推广短链
 
