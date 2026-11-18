@@ -30,6 +30,13 @@ window.SITE_CONFIG = {
   // 3. 核心平台推广口令（在此填入您的淘客、美团、京粉等推广口令）
   // --------------------------------------------------------------------------
   codes: {
+        // ===【聚推客 · 连锁餐饮与大牌5折点餐】===
+    food_kfc: "https://kurl05.cn/t9xKHw",            // 肯德基在线点餐推广短链
+    food_diancan: "https://s.t28.cn/rXkY9kRN",        // 大牌餐饮点餐聚合推广短链
+    food_luckin: "https://kurl04.cn/t9xKeE",          // 瑞幸咖啡推广短链
+    food_cotti: "https://kzurl18.cn/tHrC3M",          // 库迪咖啡推广短链
+    food_starbucks: "https://kurl05.cn/t9xKgz",      // 星巴克特惠点餐推广短链
+
     // ===【AI代充 / 会员订阅类】===
     ai_charge: "https://nf.video/VBCKk",             // 银河录像局 · ChatGPT/Claude会员代充推广短链
 

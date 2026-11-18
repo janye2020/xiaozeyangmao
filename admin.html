@@ -200,7 +200,32 @@
           </div>
         </div>
 
-                <!-- 模块：AI代充与会员订阅 -->
+                        <!-- 模块：连锁餐饮与大牌点餐 -->
+        <div class="section-box">
+          <h2>🍔 聚推客 · 连锁餐饮与大牌5折点餐</h2>
+          <div class="form-group">
+            <label for="cfg_food_diancan">大牌点餐（聚合页推广短链）</label>
+            <input type="url" id="cfg_food_diancan" placeholder="例如：https://s.t28.cn/rXkY9kRN" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_food_kfc">肯德基 · 在线点餐推广短链</label>
+            <input type="url" id="cfg_food_kfc" placeholder="例如：https://kurl05.cn/t9xKHw" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_food_luckin">瑞幸咖啡 · 饮品特惠短链</label>
+            <input type="url" id="cfg_food_luckin" placeholder="例如：https://kurl04.cn/t9xKeE" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_food_cotti">库迪咖啡 · 饮品特惠短链</label>
+            <input type="url" id="cfg_food_cotti" placeholder="例如：https://kzurl18.cn/tHrC3M" />
+          </div>
+          <div class="form-group">
+            <label for="cfg_food_starbucks">星巴克 · 饮品特惠短链</label>
+            <input type="url" id="cfg_food_starbucks" placeholder="例如：https://kurl05.cn/t9xKgz" />
+          </div>
+        </div>
+
+        <!-- 模块：AI代充与会员订阅 -->
         <div class="section-box">
           <h2>🤖 AI代充与会员订阅（ChatGPT / Claude / 流媒体）</h2>
           <div class="form-group">
@@ -365,7 +390,7 @@
         document.getElementById('cfg_notice').value = comm.notice || '';
 
         const codeKeys = [
-          'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
+          'food_diancan', 'food_kfc', 'food_luckin', 'food_cotti', 'food_starbucks', 'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
           'taobao_shangou', 'taobao_supermarket', 'taobao_general',
           'jd_waimai', 'jd_one_cent', 'jd_limited_sale', 'jd_month_card',
           'didi', 'unicom_bill'
@@ -385,7 +410,7 @@
 
         const codes = {};
         const codeKeys = [
-          'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
+          'food_diancan', 'food_kfc', 'food_luckin', 'food_cotti', 'food_starbucks', 'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
           'taobao_shangou', 'taobao_supermarket', 'taobao_general',
           'jd_waimai', 'jd_one_cent', 'jd_limited_sale', 'jd_month_card',
           'didi', 'unicom_bill'
@@ -448,7 +473,7 @@ window.SITE_CONFIG = {
         const notice = document.getElementById('cfg_notice').value.trim();
         const codes = {};
         const codeKeys = [
-          'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
+          'food_diancan', 'food_kfc', 'food_luckin', 'food_cotti', 'food_starbucks', 'ai_charge', 'meituan_waimai', 'meituan_card', 'eleme_waimai',
           'taobao_shangou', 'taobao_supermarket', 'taobao_general',
           'jd_waimai', 'jd_one_cent', 'jd_limited_sale', 'jd_month_card',
           'didi', 'unicom_bill'
