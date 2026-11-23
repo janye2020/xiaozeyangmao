@@ -32,15 +32,11 @@ CONFIG = {
     "wechat_webhook": "",          # 企业微信群机器人 Webhook URL
     "dingtalk_webhook": "",        # 钉钉群机器人 Webhook URL
 
-    # 监控频道 (5 表示赚客吧线报精选)
+    # 监控频道 (5 代表且仅代表「赚吧线报」页签: https://www.hxm5.com/xianbao/5/)
     "cate_id": "5",
 
-    # 关键词过滤白名单 (命中任意关键词则推送；设为空列表 [] 则表示全量无过滤推送)
-    "keyword_filter": [
-        "银行", "立减金", "立减", "话费", "流量", "中行", "工行", "建行", "农行", "交行", "招行", "邮储", "兴业", "华夏", "浦发", "广发", "中信", "平安",
-        "美团", "京东", "淘宝", "红包", "神价", "bug", "BUG", "免单", "1元", "0元", "券",
-        "抽奖", "羊毛", "返现", "会员", "盒马", "麦当劳", "肯德基", "外卖", "支付宝", "云闪付", "数币", "信用卡", "速览"
-    ],
+    # 全量监控模式：设为空列表 [] 即彻底关闭关键词过滤，该页签下所有新帖全量实时推送
+    "keyword_filter": [],
 
     # 已推送历史 ID 存储文件 (自动在本地去重)
     "history_file": os.path.join(os.path.dirname(os.path.abspath(__file__)), "hxm5_seen_ids.json")
@@ -272,14 +268,14 @@ def check_once():
         """
 
         # 发送推送
-        send_push(f"【线报速递】{title}", msg_html)
+        send_push(f"【赚吧线报】{title}", msg_html)
         history.add(tid)
         save_history(history)
         time.sleep(1) # 防止请求过密
 
-def run_loop(interval_seconds=120):
-    """常驻循环监听模式"""
-    print(f"[*] 启动线报屋常驻实时监控，每 {interval_seconds} 秒轮询一次...")
+def run_loop(interval_seconds=60):
+    """常驻循环监听模式 (默认 60 秒轮询一次)"""
+    print(f"[*] 启动「赚吧线报」页签专属实时监控，每 {interval_seconds} 秒轮询一次...")
     while True:
         try:
             check_once()
@@ -289,6 +285,6 @@ def run_loop(interval_seconds=120):
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "--loop":
-        run_loop(120)
+        run_loop(60)
     else:
         check_once()
