@@ -18,6 +18,10 @@ import json
 import time
 import os
 import sys
+import functools
+
+# 强制禁用输出缓冲，确保 nohup 运行日志实时秒级写入文件
+print = functools.partial(print, flush=True)
 
 # ==============================================================================
 # 1. 核心配置区域
