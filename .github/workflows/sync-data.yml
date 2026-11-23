@@ -1,0 +1,38 @@
+name: 自动同步最新线报数据 (银行支付 & 话费流量)
+
+on:
+  schedule:
+    # 每天北京时间 04:00、12:00、18:00 定时执行 (UTC: 20:00, 04:00, 10:00)
+    - cron: '0 20,4,10 * * *'
+  workflow_dispatch: # 允许在 GitHub 网页随时手动点击触发
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出仓库代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Node.js 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 运行线报同步脚本
+        run: |
+          node scripts/sync_data.js
+
+      - name: 自动提交并推送更新
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/banks.js assets/coupons.js
+          if git diff --staged --quiet; then
+            echo "线报数据未发生变化，无需提交。"
+          else
+            git commit -m "chore(data): 自动同步最新银行立减金与话费流量线报 [skip ci]"
+            git push origin main
+          fi
