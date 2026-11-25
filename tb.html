@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
     <meta name="format-detection" content="telephone=no" />
-    <title>复制口令打开淘宝领红包 - 小泽羊毛</title>
+    <title>闪购品牌日 单单有福利</title>
     <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
     <style>
       * {
@@ -16,205 +16,241 @@
         padding: 0;
         min-height: 100%;
         font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
-        background: #ff252b;
+        background: #f7f7f7;
         color: #222;
       }
       .page-wrap {
         position: relative;
         min-height: 100vh;
         width: 100%;
-        max-width: 480px;
+        max-width: 430px;
         margin: 0 auto;
-        background: linear-gradient(180deg, #ff1e27 0%, #ff3624 45%, #ff242c 100%);
-        overflow: hidden;
-        padding: 20px 14px 36px;
+        background: #ffffff;
+        overflow-x: hidden;
+        padding-bottom: 42px;
         display: flex;
         flex-direction: column;
         align-items: center;
       }
-      /* 背景装饰元素 */
-      .bg-decor {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
+
+      /* 上红下白背景中的红色顶部区域 */
+      .hero-bg {
+        position: relative;
+        width: 100%;
+        background: linear-gradient(180deg, #ff1722 0%, #ff2b24 100%);
+        padding: 0 16px 88px;
+        text-align: center;
         overflow: hidden;
-        z-index: 0;
       }
-      .gift-left {
+      /* 顶部装饰图形 */
+      .decor-purple {
         position: absolute;
-        top: 28px;
-        left: -18px;
-        width: 96px;
-        height: 96px;
-        background: linear-gradient(135deg, #ff2e63, #ff0f4b);
-        border-radius: 14px;
-        transform: rotate(-18deg);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        top: -16px;
+        left: -12px;
+        width: 72px;
+        height: 54px;
+        background: #9a5cff;
+        border-radius: 18px;
+        transform: rotate(-16deg);
       }
-      .gift-left::before {
+      .decor-pink-top {
+        position: absolute;
+        top: -18px;
+        right: -10px;
+        width: 78px;
+        height: 60px;
+        background: #ff5ca8;
+        border-radius: 50%;
+      }
+      .decor-green-top {
+        position: absolute;
+        top: 10px;
+        right: 42px;
+        width: 34px;
+        height: 22px;
+        background: #00c46a;
+        border-radius: 0 0 20px 20px;
+        transform: rotate(-14deg);
+      }
+      .decor-squiggle {
+        position: absolute;
+        top: 52px;
+        left: -6px;
+        width: 54px;
+        height: 54px;
+        pointer-events: none;
+      }
+      .decor-dot {
+        position: absolute;
+        top: 50px;
+        right: 22px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #ffd426;
+      }
+      .decor-gift-left {
+        position: absolute;
+        bottom: 18px;
+        left: -16px;
+        width: 56px;
+        height: 56px;
+        background: #ff3b6b;
+        border-radius: 10px;
+        transform: rotate(-18deg);
+      }
+      .decor-gift-left::before {
         content: "";
         position: absolute;
         left: 50%;
         top: 0;
         bottom: 0;
-        width: 12px;
+        width: 6px;
         transform: translateX(-50%);
-        background: #ffe082;
+        background: #ffe066;
       }
-      .gift-left::after {
+      .decor-gift-left::after {
         content: "";
         position: absolute;
         top: 50%;
         left: 0;
         right: 0;
-        height: 12px;
+        height: 6px;
         transform: translateY(-50%);
-        background: #ffe082;
+        background: #ffe066;
       }
-      .grid-left {
+      .decor-gift-right {
         position: absolute;
-        top: 126px;
-        left: -22px;
-        width: 84px;
-        height: 120px;
-        border-radius: 12px;
-        background:
-          linear-gradient(90deg, rgba(255, 255, 255, 0.22) 2px, transparent 2px),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.22) 2px, transparent 2px),
-          #ffbe2e;
-        background-size: 18px 18px;
-        transform: rotate(-12deg);
-        opacity: 0.9;
-      }
-      .gift-right {
-        position: absolute;
-        top: 118px;
-        right: -24px;
-        width: 90px;
-        height: 115px;
-        border-radius: 14px;
-        background: linear-gradient(160deg, #ff477e, #e91e63);
-        transform: rotate(12deg);
+        bottom: 36px;
+        right: -18px;
+        width: 64px;
+        height: 64px;
+        background: #ff4757;
+        border-radius: 10px;
+        transform: rotate(20deg);
         opacity: 0.92;
       }
-      .coin-right {
+      .decor-gift-right::before {
+        content: "";
         position: absolute;
-        top: 168px;
-        right: 4px;
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        background: radial-gradient(circle at 30% 30%, #fff3a1, #ffca28);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 7px;
+        transform: translateX(-50%);
+        background: rgba(255, 224, 102, 0.85);
+      }
+      .decor-gift-right::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 7px;
+        transform: translateY(-50%);
+        background: rgba(255, 224, 102, 0.85);
       }
 
-      /* 顶部大标题与胶囊横幅 */
-      .hero {
+      /* 顶部居中白色角标 */
+      .top-badge {
         position: relative;
-        z-index: 1;
-        width: 100%;
-        text-align: center;
-        padding-top: 6px;
-        margin-bottom: 18px;
-      }
-      .hero-big {
-        font-size: 42px;
-        line-height: 1.05;
-        font-weight: 900;
-        color: #ffffff;
-        letter-spacing: 3px;
-        text-shadow: 0 4px 12px rgba(170, 0, 12, 0.32);
-        margin: 0;
-        user-select: none;
-      }
-      .hero-pill {
-        position: relative;
-        margin: -18px auto 0;
+        z-index: 2;
         display: inline-block;
-        width: 92%;
-        max-width: 360px;
-        padding: 8px 18px;
-        border-radius: 999px;
-        background: linear-gradient(90deg, #ff341a 0%, #ff6b00 50%, #ff8200 100%);
-        color: #ffffff;
-        font-size: 18px;
-        font-weight: 800;
+        background: #ffffff;
+        color: #ff5500;
+        font-size: 20px;
+        font-weight: 900;
+        font-style: italic;
+        padding: 5px 28px 8px;
+        border-radius: 0 0 18px 18px;
+        box-shadow: 0 4px 12px rgba(150, 0, 10, 0.14);
+        margin-bottom: 20px;
         letter-spacing: 1px;
-        box-shadow: 0 6px 16px rgba(180, 20, 0, 0.28);
-        border: 1.5px solid rgba(255, 232, 190, 0.45);
       }
 
-      /* 主卡片 */
-      .card {
+      /* 两行大标题 */
+      .hero-title {
         position: relative;
-        z-index: 1;
-        width: 100%;
-        background: linear-gradient(180deg, #fff6f3 0%, #ffffff 38%);
-        border-radius: 20px;
-        padding: 20px 18px 22px;
-        box-shadow: 0 14px 32px rgba(140, 0, 10, 0.24);
+        z-index: 2;
+        margin: 0;
+        color: #ffffff;
+        font-size: 38px;
+        font-weight: 900;
+        line-height: 1.18;
+        letter-spacing: 2px;
+        text-shadow: 0 3px 10px rgba(170, 0, 10, 0.25);
+      }
+
+      /* 骑跨红白边界的米白主卡片 */
+      .main-card {
+        position: relative;
+        z-index: 3;
+        width: calc(100% - 28px);
+        margin-top: -66px;
+        background: #fff7f4;
+        border-radius: 16px;
+        padding: 16px 14px 18px;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
       }
       .card-header {
-        position: relative;
         display: flex;
         align-items: center;
         gap: 10px;
-        padding: 7px 14px 7px 8px;
+        padding: 5px 12px 5px 6px;
         border-radius: 999px;
-        background: linear-gradient(90deg, rgba(255, 198, 198, 0.58) 0%, rgba(255, 224, 224, 0.22) 65%, rgba(255, 255, 255, 0) 100%);
-        margin-bottom: 18px;
+        background: linear-gradient(90deg, rgba(255, 198, 198, 0.56) 0%, rgba(255, 226, 226, 0.2) 72%, rgba(255, 255, 255, 0) 100%);
+        margin-bottom: 16px;
       }
-      .header-dot {
+      .header-orb {
         flex-shrink: 0;
-        width: 30px;
-        height: 30px;
+        width: 28px;
+        height: 28px;
         border-radius: 50%;
         background: radial-gradient(circle at 35% 35%, #ffecec, #ff9999);
-        box-shadow: 0 2px 6px rgba(255, 107, 107, 0.25);
+        box-shadow: 0 2px 6px rgba(255, 107, 107, 0.22);
       }
       .card-title {
         margin: 0;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 800;
         color: #ef3b32;
-        letter-spacing: 0.3px;
       }
 
-      /* 步骤条 */
+      /* 步骤 1 & 2 */
       .steps {
         position: relative;
         padding-left: 2px;
-        margin-bottom: 18px;
+        margin-bottom: 16px;
       }
       .step-row {
         position: relative;
         display: flex;
         align-items: center;
         gap: 10px;
-        font-size: 16px;
-        line-height: 1.45;
+        font-size: 15px;
+        line-height: 1.4;
         color: #262626;
         font-weight: 500;
       }
       .step-row + .step-row {
-        margin-top: 18px;
+        margin-top: 15px;
       }
       .step-row:first-child::after {
         content: "";
         position: absolute;
-        left: 11px;
-        top: 26px;
-        height: 16px;
+        left: 9.5px;
+        top: 22px;
+        height: 14px;
         border-left: 1.5px dashed #8c8c8c;
       }
       .step-num {
         flex-shrink: 0;
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
         border-radius: 50%;
         background: #141414;
         color: #ffffff;
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 700;
         display: inline-flex;
         align-items: center;
@@ -228,102 +264,208 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 24px;
-        height: 24px;
+        width: 22px;
+        height: 22px;
         border-radius: 6px;
         background: linear-gradient(135deg, #ff7a00, #ff4500);
         color: #ffffff;
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 800;
-        margin: 0 4px 0 2px;
-        vertical-align: -3px;
-        box-shadow: 0 2px 6px rgba(255, 85, 0, 0.25);
+        margin: 0 3px 0 1px;
       }
 
-      /* 口令展示框 */
-      .tkl-panel {
-        background: #fff3ee;
-        border: 1.5px dashed #ff9b7a;
-        border-radius: 14px;
-        padding: 12px 14px;
-        margin-bottom: 16px;
+      /* 仿真外卖红包弹窗预览区 */
+      .preview-stage {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #4e4b48;
+        padding: 18px 16px 0;
+      }
+      .backdrop-grid {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        padding: 12px;
+        opacity: 0.22;
+        color: #ffffff;
+        font-size: 12px;
+        text-align: center;
+        pointer-events: none;
+      }
+      .backdrop-item {
+        background: rgba(255, 255, 255, 0.14);
+        border-radius: 10px;
+        padding: 16px 4px;
+      }
+      .popup-mock {
+        position: relative;
+        background: linear-gradient(180deg, #fff5f2 0%, #ffffff 34%);
+        border-radius: 14px 14px 0 0;
+        padding: 18px 12px 14px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
         text-align: center;
       }
-      .tkl-desc {
+      .ribbon-tag {
+        position: absolute;
+        top: -2px;
+        right: 14px;
+        background: linear-gradient(180deg, #ef1a2d, #cf0f22);
+        color: #ffffff;
         font-size: 12px;
-        color: #8c5a4a;
-        margin-bottom: 6px;
+        font-weight: 800;
+        padding: 4px 12px;
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0 3px 8px rgba(207, 15, 34, 0.3);
       }
-      .tkl-text {
+      .popup-title {
+        margin: 0 0 12px;
+        font-size: 20px;
+        font-weight: 900;
+        color: #1f1f1f;
+        letter-spacing: 0.5px;
+      }
+      .popup-title .red {
+        color: #ff2424;
+      }
+      .popup-title .spark {
+        font-size: 13px;
+        vertical-align: 4px;
+        margin: 0 2px;
+      }
+      .voucher-card {
+        display: flex;
+        align-items: stretch;
+        border: 1.5px solid #ff2828;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #ffffff;
+        margin-bottom: 10px;
+        min-height: 68px;
+      }
+      .voucher-card:last-child {
+        margin-bottom: 0;
+      }
+      .voucher-left {
+        width: 33%;
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 4px;
+        color: #ff2424;
+      }
+      .voucher-amount {
+        font-size: 24px;
+        font-weight: 900;
+        line-height: 1.05;
+      }
+      .voucher-amount small {
+        font-size: 14px;
+        font-weight: 800;
+      }
+      .voucher-cond {
+        font-size: 10px;
+        margin-top: 3px;
+        color: #ff3a3a;
+      }
+      .voucher-right {
+        flex: 1;
+        background: repeating-linear-gradient(
+          -45deg,
+          #ff2929,
+          #ff2929 10px,
+          #f61c1c 10px,
+          #f61c1c 20px
+        );
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 10px 10px 12px;
+        text-align: left;
+      }
+      .voucher-name {
+        font-size: 15px;
+        font-weight: 800;
+        line-height: 1.2;
+      }
+      .voucher-limit {
+        font-size: 10px;
+        opacity: 0.92;
+        margin-top: 4px;
+      }
+      .voucher-pill {
+        flex-shrink: 0;
+        background: #ffffff;
+        color: #ff2424;
+        font-size: 11px;
+        font-weight: 800;
+        padding: 5px 12px;
+        border-radius: 999px;
+      }
+
+      /* 底部单一主按钮 */
+      .cta-wrap {
+        width: 100%;
+        padding: 28px 20px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn-cta {
+        width: 78%;
+        max-width: 310px;
+        height: 52px;
+        border: none;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #fb251b 0%, #ff6a00 100%);
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(255, 68, 22, 0.32);
+        transition: transform 0.12s ease;
+      }
+      .btn-cta:active {
+        transform: scale(0.98);
+      }
+      .btn-cta.copied {
+        background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+        box-shadow: 0 8px 20px rgba(22, 163, 74, 0.28);
+      }
+
+      /* 仅当自动复制受阻时才显示的兜底复制框 */
+      .fallback-box {
+        display: none;
+        width: 86%;
+        max-width: 320px;
+        margin-top: 14px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        background: #fff5f2;
+        border: 1px dashed #ff8c66;
+        text-align: center;
+      }
+      .fallback-box textarea {
         width: 100%;
         border: none;
         background: transparent;
         text-align: center;
-        font-size: 16px;
-        font-weight: 800;
-        color: #1f1f1f;
-        line-height: 1.45;
+        font-size: 14px;
+        font-weight: 700;
+        color: #222;
         resize: none;
         outline: none;
-        font-family: inherit;
-      }
-
-      /* 按钮组 */
-      .btn-copy {
-        width: 100%;
-        height: 50px;
-        border: none;
-        border-radius: 999px;
-        background: linear-gradient(90deg, #ff2a2a 0%, #ff6c00 100%);
-        color: #ffffff;
-        font-size: 18px;
-        font-weight: 800;
-        letter-spacing: 1px;
-        cursor: pointer;
-        box-shadow: 0 8px 20px rgba(255, 58, 30, 0.34);
-        transition: transform 0.12s ease;
-      }
-      .btn-copy:active {
-        transform: scale(0.98);
-      }
-      .btn-copy.copied {
-        background: linear-gradient(90deg, #16a34a 0%, #22c55e 100%);
-        box-shadow: 0 8px 20px rgba(22, 163, 74, 0.3);
-      }
-      .btn-open {
-        width: 100%;
-        height: 42px;
-        margin-top: 10px;
-        border: 1px solid #ffd0c2;
-        border-radius: 999px;
-        background: #ffffff;
-        color: #ef3b32;
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-      }
-      .error-tip {
-        display: none;
-        margin-top: 10px;
-        font-size: 13px;
-        color: #d92d20;
-        text-align: center;
-      }
-      .footer-link {
-        position: relative;
-        z-index: 1;
-        margin-top: 18px;
-        font-size: 13px;
-        color: rgba(255, 255, 255, 0.88);
-        text-decoration: none;
-      }
-      .footer-link strong {
-        color: #fff2a6;
       }
       .toast {
         position: fixed;
         left: 50%;
-        bottom: 34px;
+        bottom: 32px;
         transform: translateX(-50%) translateY(20px);
         background: rgba(17, 17, 17, 0.88);
         color: #ffffff;
@@ -344,22 +486,25 @@
   </head>
   <body>
     <div class="page-wrap">
-      <div class="bg-decor" aria-hidden="true">
-        <div class="gift-left"></div>
-        <div class="grid-left"></div>
-        <div class="gift-right"></div>
-        <div class="coin-right"></div>
-      </div>
+      <header class="hero-bg">
+        <div class="decor-purple" aria-hidden="true"></div>
+        <div class="decor-pink-top" aria-hidden="true"></div>
+        <div class="decor-green-top" aria-hidden="true"></div>
+        <svg class="decor-squiggle" viewBox="0 0 60 60" aria-hidden="true">
+          <path d="M8,10 Q24,4 20,20 T34,34 T18,50" fill="none" stroke="#ffd21f" stroke-width="8" stroke-linecap="round" />
+        </svg>
+        <div class="decor-dot" aria-hidden="true"></div>
+        <div class="decor-gift-left" aria-hidden="true"></div>
+        <div class="decor-gift-right" aria-hidden="true"></div>
 
-      <header class="hero">
-        <h1 class="hero-big" id="badgeText">每天有福利</h1>
-        <div class="hero-pill">复制口令打开淘宝领红包</div>
+        <div class="top-badge" id="badgeText">淘宝闪购</div>
+        <h1 class="hero-title">闪购品牌日<br />单单有福利</h1>
       </header>
 
-      <main class="card">
+      <main class="main-card">
         <div class="card-header">
-          <span class="header-dot" aria-hidden="true"></span>
-          <h2 class="card-title" id="titleText">正在加载福利...</h2>
+          <span class="header-orb" aria-hidden="true"></span>
+          <h2 class="card-title" id="titleText">最高15-15 红包天天领</h2>
         </div>
 
         <div class="steps">
@@ -373,31 +518,74 @@
           </div>
         </div>
 
-        <div class="tkl-panel">
-          <div class="tkl-desc" id="descText">长按或点击下方按钮复制口令</div>
-          <textarea class="tkl-text" id="tklInput" rows="2" readonly></textarea>
-        </div>
+        <div class="preview-stage" aria-hidden="true">
+          <div class="backdrop-grid">
+            <div class="backdrop-item">美食</div>
+            <div class="backdrop-item">鲜花</div>
+            <div class="backdrop-item">超市</div>
+            <div class="backdrop-item">百货</div>
+            <div class="backdrop-item">手机</div>
+            <div class="backdrop-item">饮品</div>
+            <div class="backdrop-item">果蔬</div>
+            <div class="backdrop-item">调味</div>
+          </div>
 
-        <button class="btn-copy" id="copyBtn" type="button">一键复制淘口令</button>
-        <button class="btn-open" id="openTbBtn" type="button">已复制，打开手机淘宝</button>
-        <div class="error-tip" id="errorTip">未找到有效口令，请检查链接参数</div>
+          <div class="popup-mock">
+            <div class="ribbon-tag">省钱卡</div>
+            <div class="popup-title">
+              <span class="red">外卖红包<span class="spark">✦</span></span>今日已发放<span class="spark">✦</span>
+            </div>
+
+            <div class="voucher-card">
+              <div class="voucher-left">
+                <div class="voucher-amount"><small>¥</small>15</div>
+                <div class="voucher-cond">满15元可用</div>
+              </div>
+              <div class="voucher-right">
+                <div>
+                  <div class="voucher-name">外卖红包</div>
+                  <div class="voucher-limit">仅限于美食外卖</div>
+                </div>
+                <span class="voucher-pill">去使用</span>
+              </div>
+            </div>
+
+            <div class="voucher-card">
+              <div class="voucher-left">
+                <div class="voucher-amount"><small>¥</small>7</div>
+                <div class="voucher-cond">满9元可用</div>
+              </div>
+              <div class="voucher-right">
+                <div>
+                  <div class="voucher-name">外卖红包</div>
+                  <div class="voucher-limit">仅限于美食外卖</div>
+                </div>
+                <span class="voucher-pill">去使用</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
 
-      <a class="footer-link" href="/">更多每日红包线报 → <strong>小泽羊毛</strong></a>
+      <div class="cta-wrap">
+        <button class="btn-cta" id="copyBtn" type="button">复制口令打开淘宝领红包</button>
+        <div class="fallback-box" id="fallbackBox">
+          <div style="font-size:12px;color:#ef3b32;margin-bottom:4px;">请长按下方口令手动复制</div>
+          <textarea id="tklInput" rows="2" readonly></textarea>
+        </div>
+      </div>
     </div>
 
-    <div class="toast" id="toast">已复制口令，请打开手机淘宝</div>
+    <div class="toast" id="toast">已复制口令，请打开手机淘宝领取</div>
 
     <script>
       (function () {
         var params = new URLSearchParams(window.location.search);
         var titleEl = document.getElementById("titleText");
         var badgeEl = document.getElementById("badgeText");
-        var descEl = document.getElementById("descText");
-        var tklEl = document.getElementById("tklInput");
         var copyBtn = document.getElementById("copyBtn");
-        var openTbBtn = document.getElementById("openTbBtn");
-        var errorTip = document.getElementById("errorTip");
+        var fallbackBox = document.getElementById("fallbackBox");
+        var tklInput = document.getElementById("tklInput");
         var toastEl = document.getElementById("toast");
         var currentTkl = "";
 
@@ -420,29 +608,24 @@
           clearTimeout(window.__toastTimer);
           window.__toastTimer = setTimeout(function () {
             toastEl.classList.remove("show");
-          }, 2200);
+          }, 2400);
         }
 
         function applyData(data) {
           var title = data.title || "最高15-15 红包天天领";
-          var badge = data.badge || "每天有福利";
-          var desc = data.desc || "复制下方口令后打开手机淘宝即可领取";
+          var badge = data.badge || "淘宝闪购";
           var tkl = (data.tkl || "").trim();
 
-          document.title = title + " - 小泽羊毛";
           titleEl.textContent = title;
           badgeEl.textContent = badge;
-          descEl.textContent = desc;
-
           if (!tkl) {
-            tklEl.value = "";
             copyBtn.disabled = true;
             copyBtn.style.opacity = "0.5";
-            errorTip.style.display = "block";
+            copyBtn.textContent = "口令无效或已过期";
             return;
           }
           currentTkl = tkl;
-          tklEl.value = tkl;
+          tklInput.value = tkl;
         }
 
         function fallbackCopy(text) {
@@ -469,39 +652,29 @@
         function copyTkl() {
           if (!currentTkl) return;
           var done = function () {
-            copyBtn.textContent = "✅ 已复制口令，去打开淘宝";
+            copyBtn.textContent = "已复制口令，请打开淘宝领红包";
             copyBtn.classList.add("copied");
-            showToast("已复制口令，快去打开手机淘宝吧");
+            showToast("已复制口令，切回桌面打开手机淘宝即可");
+          };
+          var fail = function () {
+            fallbackBox.style.display = "block";
+            tklInput.focus();
+            tklInput.select();
+            showToast("请长按下方口令手动复制");
           };
           if (navigator.clipboard && window.isSecureContext) {
             navigator.clipboard.writeText(currentTkl).then(done).catch(function () {
               if (fallbackCopy(currentTkl)) done();
-              else showToast("请长按上方口令框手动复制");
+              else fail();
             });
           } else if (fallbackCopy(currentTkl)) {
             done();
           } else {
-            tklEl.focus();
-            tklEl.select();
-            showToast("请长按上方口令框手动复制");
+            fail();
           }
         }
 
         copyBtn.addEventListener("click", copyTkl);
-        tklEl.addEventListener("click", function () {
-          tklEl.select();
-          copyTkl();
-        });
-
-        openTbBtn.addEventListener("click", function () {
-          if (currentTkl) copyTkl();
-          var isWeChat = /MicroMessenger/i.test(navigator.userAgent);
-          if (isWeChat) {
-            showToast("微信内无法直接跳转，请切回桌面打开淘宝");
-            return;
-          }
-          window.location.href = "taobao://";
-        });
 
         var dParam = params.get("d");
         if (dParam) {
@@ -517,8 +690,7 @@
           applyData({
             tkl: tklParam,
             title: params.get("title") || "最高15-15 红包天天领",
-            badge: params.get("badge") || "每天有福利",
-            desc: params.get("desc") || ""
+            badge: params.get("badge") || "淘宝闪购"
           });
           return;
         }
