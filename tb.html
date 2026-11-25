@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>淘宝福利口令领取 - 小泽羊毛</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
+    <style>
+      * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+        font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+        background: #f5f6fa;
+        color: #1f2329;
+      }
+      .page-wrap {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 16px 36px;
+        background: linear-gradient(180deg, #ff5500 0%, #ff7a18 180px, #f5f6fa 320px);
+      }
+      .card {
+        width: 100%;
+        max-width: 420px;
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 24px 20px 22px;
+        box-shadow: 0 12px 32px rgba(255, 85, 0, 0.14);
+      }
+      .brand-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 12px;
+        border-radius: 999px;
+        background: #fff2eb;
+        color: #ff5000;
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .site-tag {
+        font-size: 12px;
+        color: #8f959e;
+        text-decoration: none;
+      }
+      .title {
+        margin: 0 0 8px;
+        font-size: 21px;
+        line-height: 1.35;
+        font-weight: 800;
+        color: #1f2329;
+      }
+      .desc {
+        margin: 0 0 18px;
+        font-size: 14px;
+        line-height: 1.55;
+        color: #646a73;
+      }
+      .tkl-box {
+        background: #fff8f4;
+        border: 1.5px dashed #ffb48a;
+        border-radius: 14px;
+        padding: 14px;
+        margin-bottom: 16px;
+        text-align: center;
+      }
+      .tkl-label {
+        font-size: 12px;
+        color: #ff6a24;
+        margin-bottom: 6px;
+        font-weight: 600;
+      }
+      .tkl-text {
+        width: 100%;
+        border: none;
+        background: transparent;
+        text-align: center;
+        font-size: 15px;
+        font-weight: 700;
+        color: #1f2329;
+        line-height: 1.5;
+        resize: none;
+        outline: none;
+        font-family: inherit;
+      }
+      .btn-primary {
+        width: 100%;
+        height: 48px;
+        border: none;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #ff5000 0%, #ff7b00 100%);
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 8px 18px rgba(255, 80, 0, 0.28);
+        transition: transform 0.12s ease, opacity 0.12s ease;
+      }
+      .btn-primary:active {
+        transform: scale(0.98);
+      }
+      .btn-primary.copied {
+        background: linear-gradient(90deg, #16a34a 0%, #22c55e 100%);
+        box-shadow: 0 8px 18px rgba(22, 163, 74, 0.24);
+      }
+      .btn-secondary {
+        width: 100%;
+        height: 42px;
+        margin-top: 10px;
+        border: 1px solid #ffd2bd;
+        border-radius: 999px;
+        background: #fffaf7;
+        color: #ff5000;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .steps {
+        margin-top: 20px;
+        padding-top: 16px;
+        border-top: 1px solid #f0f1f5;
+      }
+      .step-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #4e5969;
+      }
+      .step-item + .step-item {
+        margin-top: 8px;
+      }
+      .step-num {
+        flex-shrink: 0;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #fff2eb;
+        color: #ff5000;
+        font-size: 11px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1px;
+      }
+      .footer-link {
+        margin-top: 18px;
+        font-size: 13px;
+        color: #8f959e;
+        text-decoration: none;
+      }
+      .footer-link strong {
+        color: #ff5000;
+      }
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 32px;
+        transform: translateX(-50%) translateY(20px);
+        background: rgba(20, 23, 28, 0.88);
+        color: #ffffff;
+        padding: 10px 18px;
+        border-radius: 999px;
+        font-size: 13px;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+        z-index: 999;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      .error-tip {
+        color: #dc2626;
+        font-size: 13px;
+        text-align: center;
+        margin-top: 10px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrap">
+      <div class="card">
+        <div class="brand-row">
+          <span class="badge" id="badgeText">淘宝限时福利</span>
+          <a class="site-tag" href="/">小泽羊毛</a>
+        </div>
+
+        <h1 class="title" id="titleText">正在加载口令...</h1>
+        <p class="desc" id="descText">复制下方淘口令后，打开手机淘宝 App 即可自动弹出活动页面</p>
+
+        <div class="tkl-box">
+          <div class="tkl-label">长按或点击下方按钮复制口令</div>
+          <textarea class="tkl-text" id="tklInput" rows="2" readonly></textarea>
+        </div>
+
+        <button class="btn-primary" id="copyBtn" type="button">一键复制口令</button>
+        <button class="btn-secondary" id="openTbBtn" type="button">已复制，打开手机淘宝</button>
+        <div class="error-tip" id="errorTip">未找到有效口令，请检查链接参数</div>
+
+        <div class="steps">
+          <div class="step-item">
+            <span class="step-num">1</span>
+            <span>点击上方<strong>「一键复制口令」</strong>按钮（如在微信中无反应，可长按口令框手动复制）。</span>
+          </div>
+          <div class="step-item">
+            <span class="step-num">2</span>
+            <span>切回桌面打开<strong>手机淘宝 App</strong>，等待 1-2 秒即可自动弹出对应优惠页面。</span>
+          </div>
+        </div>
+      </div>
+
+      <a class="footer-link" href="/">查看更多每日线报 → <strong>小泽羊毛</strong></a>
+    </div>
+
+    <div class="toast" id="toast">已复制口令，请打开手机淘宝</div>
+
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var titleEl = document.getElementById("titleText");
+        var badgeEl = document.getElementById("badgeText");
+        var descEl = document.getElementById("descText");
+        var tklEl = document.getElementById("tklInput");
+        var copyBtn = document.getElementById("copyBtn");
+        var openTbBtn = document.getElementById("openTbBtn");
+        var errorTip = document.getElementById("errorTip");
+        var toastEl = document.getElementById("toast");
+        var currentTkl = "";
+
+        function decodeBase64Utf8(str) {
+          try {
+            var bin = atob(str.replace(/-/g, "+").replace(/_/g, "/"));
+            var bytes = new Uint8Array(bin.length);
+            for (var i = 0; i < bin.length; i++) {
+              bytes[i] = bin.charCodeAt(i);
+            }
+            return new TextDecoder("utf-8").decode(bytes);
+          } catch (e) {
+            return "";
+          }
+        }
+
+        function showToast(msg) {
+          toastEl.textContent = msg;
+          toastEl.classList.add("show");
+          clearTimeout(window.__toastTimer);
+          window.__toastTimer = setTimeout(function () {
+            toastEl.classList.remove("show");
+          }, 2200);
+        }
+
+        function applyData(data) {
+          var title = data.title || "淘宝限时购福利";
+          var badge = data.badge || "淘宝限时福利";
+          var desc = data.desc || "复制下方淘口令后，打开手机淘宝 App 即可自动弹出领券";
+          var tkl = (data.tkl || "").trim();
+
+          document.title = title + " - 小泽羊毛";
+          titleEl.textContent = title;
+          badgeEl.textContent = badge;
+          descEl.textContent = desc;
+
+          if (!tkl) {
+            tklEl.value = "";
+            copyBtn.disabled = true;
+            copyBtn.style.opacity = "0.5";
+            errorTip.style.display = "block";
+            return;
+          }
+          currentTkl = tkl;
+          tklEl.value = tkl;
+        }
+
+        function fallbackCopy(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "fixed";
+          ta.style.top = "0";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.focus();
+          ta.select();
+          ta.setSelectionRange(0, text.length);
+          var ok = false;
+          try {
+            ok = document.execCommand("copy");
+          } catch (e) {
+            ok = false;
+          }
+          document.body.removeChild(ta);
+          return ok;
+        }
+
+        function copyTkl() {
+          if (!currentTkl) return;
+          var done = function () {
+            copyBtn.textContent = "✅ 已复制！请打开淘宝 App";
+            copyBtn.classList.add("copied");
+            showToast("已复制口令，快去打开手机淘宝吧");
+          };
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(currentTkl).then(done).catch(function () {
+              if (fallbackCopy(currentTkl)) done();
+              else showToast("请长按上方口令框手动复制");
+            });
+          } else if (fallbackCopy(currentTkl)) {
+            done();
+          } else {
+            tklEl.focus();
+            tklEl.select();
+            showToast("请长按上方口令框手动复制");
+          }
+        }
+
+        copyBtn.addEventListener("click", copyTkl);
+        tklEl.addEventListener("click", function () {
+          tklEl.select();
+          copyTkl();
+        });
+
+        openTbBtn.addEventListener("click", function () {
+          if (currentTkl) copyTkl();
+          var isWeChat = /MicroMessenger/i.test(navigator.userAgent);
+          if (isWeChat) {
+            showToast("微信内无法直接跳转，请手动切回桌面打开淘宝");
+            return;
+          }
+          window.location.href = "taobao://";
+        });
+
+        // 1) Base64 直传模式 (?d=...)
+        var dParam = params.get("d");
+        if (dParam) {
+          var raw = decodeBase64Utf8(dParam);
+          try {
+            applyData(JSON.parse(raw));
+            return;
+          } catch (e) {}
+        }
+
+        // 2) 明文参数模式 (?tkl=...&title=...)
+        var tklParam = params.get("tkl");
+        if (tklParam) {
+          applyData({
+            tkl: tklParam,
+            title: params.get("title") || "淘宝限时购福利",
+            badge: params.get("badge") || "淘宝限时福利",
+            desc: params.get("desc") || ""
+          });
+          return;
+        }
+
+        // 3) 短码配置模式 (?code=xianshi15)
+        var codeParam = params.get("code");
+        if (codeParam) {
+          fetch("/assets/tb-links.json?v=" + Date.now())
+            .then(function (r) { return r.json(); })
+            .then(function (map) {
+              if (map && map[codeParam]) {
+                applyData(map[codeParam]);
+              } else {
+                applyData({ title: "口令已失效或不存在", tkl: "" });
+              }
+            })
+            .catch(function () {
+              applyData({ title: "加载失败，请稍后重试", tkl: "" });
+            });
+          return;
+        }
+
+        applyData({ title: "缺少口令参数", tkl: "" });
+      })();
+    </script>
+  </body>
+</html>

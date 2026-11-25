@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>淘口令中间页链接生成器 - 小泽羊毛</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
+    <style>
+      body {
+        margin: 0;
+        padding: 24px 16px;
+        font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+        background: #f5f6fa;
+        color: #1f2329;
+      }
+      .box {
+        max-width: 560px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+      }
+      h1 {
+        margin: 0 0 6px;
+        font-size: 20px;
+      }
+      .sub {
+        margin: 0 0 20px;
+        font-size: 13px;
+        color: #646a73;
+      }
+      label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        margin: 14px 0 6px;
+      }
+      input, textarea {
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid #dcdfe6;
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-size: 14px;
+        font-family: inherit;
+      }
+      button {
+        margin-top: 16px;
+        width: 100%;
+        height: 44px;
+        border: none;
+        border-radius: 10px;
+        background: #ff5000;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .result {
+        margin-top: 18px;
+        padding: 14px;
+        background: #fff8f4;
+        border: 1px solid #ffd2bd;
+        border-radius: 10px;
+        display: none;
+      }
+      .result a {
+        word-break: break-all;
+        color: #ff5000;
+        font-size: 13px;
+      }
+      .copy-btn {
+        background: #16a34a;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h1>淘口令中间页生成器</h1>
+      <p class="sub">输入任意淘口令即可立即生成可发微信群的独立链接（无需改代码）</p>
+
+      <label>活动标题</label>
+      <input id="title" value="淘宝限时购 15-xx" placeholder="例如：淘宝限时购 15-xx" />
+
+      <label>角标文案</label>
+      <input id="badge" value="淘宝限时福利" placeholder="例如：淘宝限时福利" />
+
+      <label>说明文案</label>
+      <input id="desc" value="复制口令后打开手机淘宝即可自动弹窗领取" />
+
+      <label>淘口令（必填）</label>
+      <textarea id="tkl" rows="3" placeholder="粘贴你的淘口令，例如：88￥ CZ0001 xxxxxxxx￥ https://m.tb.cn/..."></textarea>
+
+      <button id="genBtn" type="button">生成推广链接</button>
+
+      <div class="result" id="resultBox">
+        <div style="font-size:12px;color:#646a73;margin-bottom:6px;">生成的中间页链接：</div>
+        <a id="outLink" href="#" target="_blank"></a>
+        <button class="copy-btn" id="copyOutBtn" type="button">复制链接</button>
+      </div>
+    </div>
+
+    <script>
+      function encodeBase64Utf8(str) {
+        var bytes = new TextEncoder().encode(str);
+        var bin = "";
+        for (var i = 0; i < bytes.length; i++) {
+          bin += String.fromCharCode(bytes[i]);
+        }
+        return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+      }
+
+      document.getElementById("genBtn").addEventListener("click", function () {
+        var tkl = document.getElementById("tkl").value.trim();
+        if (!tkl) {
+          alert("请先输入淘口令");
+          return;
+        }
+        var payload = {
+          title: document.getElementById("title").value.trim(),
+          badge: document.getElementById("badge").value.trim(),
+          desc: document.getElementById("desc").value.trim(),
+          tkl: tkl
+        };
+        var base = window.location.origin + "/tb.html?d=" + encodeBase64Utf8(JSON.stringify(payload));
+        var outLink = document.getElementById("outLink");
+        outLink.href = base;
+        outLink.textContent = base;
+        document.getElementById("resultBox").style.display = "block";
+      });
+
+      document.getElementById("copyOutBtn").addEventListener("click", function () {
+        var url = document.getElementById("outLink").textContent;
+        navigator.clipboard.writeText(url).then(function () {
+          alert("已复制链接！可直接发群或用短链工具缩短");
+        });
+      });
+    </script>
+  </body>
+</html>
