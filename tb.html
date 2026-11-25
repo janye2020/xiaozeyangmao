@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
     <meta name="format-detection" content="telephone=no" />
-    <title>淘宝福利口令领取 - 小泽羊毛</title>
+    <title>复制口令打开淘宝领红包 - 小泽羊毛</title>
     <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
     <style>
       * {
@@ -16,165 +16,316 @@
         padding: 0;
         min-height: 100%;
         font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
-        background: #f5f6fa;
-        color: #1f2329;
+        background: #ff252b;
+        color: #222;
       }
       .page-wrap {
+        position: relative;
         min-height: 100vh;
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto;
+        background: linear-gradient(180deg, #ff1e27 0%, #ff3624 45%, #ff242c 100%);
+        overflow: hidden;
+        padding: 20px 14px 36px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        padding: 20px 16px 36px;
-        background: linear-gradient(180deg, #ff5500 0%, #ff7a18 180px, #f5f6fa 320px);
       }
-      .card {
+      /* 背景装饰元素 */
+      .bg-decor {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 0;
+      }
+      .gift-left {
+        position: absolute;
+        top: 28px;
+        left: -18px;
+        width: 96px;
+        height: 96px;
+        background: linear-gradient(135deg, #ff2e63, #ff0f4b);
+        border-radius: 14px;
+        transform: rotate(-18deg);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      }
+      .gift-left::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 12px;
+        transform: translateX(-50%);
+        background: #ffe082;
+      }
+      .gift-left::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 12px;
+        transform: translateY(-50%);
+        background: #ffe082;
+      }
+      .grid-left {
+        position: absolute;
+        top: 126px;
+        left: -22px;
+        width: 84px;
+        height: 120px;
+        border-radius: 12px;
+        background:
+          linear-gradient(90deg, rgba(255, 255, 255, 0.22) 2px, transparent 2px),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.22) 2px, transparent 2px),
+          #ffbe2e;
+        background-size: 18px 18px;
+        transform: rotate(-12deg);
+        opacity: 0.9;
+      }
+      .gift-right {
+        position: absolute;
+        top: 118px;
+        right: -24px;
+        width: 90px;
+        height: 115px;
+        border-radius: 14px;
+        background: linear-gradient(160deg, #ff477e, #e91e63);
+        transform: rotate(12deg);
+        opacity: 0.92;
+      }
+      .coin-right {
+        position: absolute;
+        top: 168px;
+        right: 4px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, #fff3a1, #ffca28);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+      }
+
+      /* 顶部大标题与胶囊横幅 */
+      .hero {
+        position: relative;
+        z-index: 1;
         width: 100%;
-        max-width: 420px;
-        background: #ffffff;
-        border-radius: 20px;
-        padding: 24px 20px 22px;
-        box-shadow: 0 12px 32px rgba(255, 85, 0, 0.14);
+        text-align: center;
+        padding-top: 6px;
+        margin-bottom: 18px;
       }
-      .brand-row {
+      .hero-big {
+        font-size: 42px;
+        line-height: 1.05;
+        font-weight: 900;
+        color: #ffffff;
+        letter-spacing: 3px;
+        text-shadow: 0 4px 12px rgba(170, 0, 12, 0.32);
+        margin: 0;
+        user-select: none;
+      }
+      .hero-pill {
+        position: relative;
+        margin: -18px auto 0;
+        display: inline-block;
+        width: 92%;
+        max-width: 360px;
+        padding: 8px 18px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #ff341a 0%, #ff6b00 50%, #ff8200 100%);
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        box-shadow: 0 6px 16px rgba(180, 20, 0, 0.28);
+        border: 1.5px solid rgba(255, 232, 190, 0.45);
+      }
+
+      /* 主卡片 */
+      .card {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        background: linear-gradient(180deg, #fff6f3 0%, #ffffff 38%);
+        border-radius: 20px;
+        padding: 20px 18px 22px;
+        box-shadow: 0 14px 32px rgba(140, 0, 10, 0.24);
+      }
+      .card-header {
+        position: relative;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        margin-bottom: 16px;
+        gap: 10px;
+        padding: 7px 14px 7px 8px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(255, 198, 198, 0.58) 0%, rgba(255, 224, 224, 0.22) 65%, rgba(255, 255, 255, 0) 100%);
+        margin-bottom: 18px;
       }
-      .badge {
+      .header-dot {
+        flex-shrink: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 35%, #ffecec, #ff9999);
+        box-shadow: 0 2px 6px rgba(255, 107, 107, 0.25);
+      }
+      .card-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 800;
+        color: #ef3b32;
+        letter-spacing: 0.3px;
+      }
+
+      /* 步骤条 */
+      .steps {
+        position: relative;
+        padding-left: 2px;
+        margin-bottom: 18px;
+      }
+      .step-row {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 16px;
+        line-height: 1.45;
+        color: #262626;
+        font-weight: 500;
+      }
+      .step-row + .step-row {
+        margin-top: 18px;
+      }
+      .step-row:first-child::after {
+        content: "";
+        position: absolute;
+        left: 11px;
+        top: 26px;
+        height: 16px;
+        border-left: 1.5px dashed #8c8c8c;
+      }
+      .step-num {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #141414;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 700;
         display: inline-flex;
         align-items: center;
-        gap: 6px;
-        padding: 5px 12px;
-        border-radius: 999px;
-        background: #fff2eb;
-        color: #ff5000;
-        font-size: 12px;
+        justify-content: center;
+      }
+      .hl-red {
+        color: #ef3b32;
         font-weight: 700;
       }
-      .site-tag {
-        font-size: 12px;
-        color: #8f959e;
-        text-decoration: none;
-      }
-      .title {
-        margin: 0 0 8px;
-        font-size: 21px;
-        line-height: 1.35;
-        font-weight: 800;
-        color: #1f2329;
-      }
-      .desc {
-        margin: 0 0 18px;
+      .tb-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 6px;
+        background: linear-gradient(135deg, #ff7a00, #ff4500);
+        color: #ffffff;
         font-size: 14px;
-        line-height: 1.55;
-        color: #646a73;
+        font-weight: 800;
+        margin: 0 4px 0 2px;
+        vertical-align: -3px;
+        box-shadow: 0 2px 6px rgba(255, 85, 0, 0.25);
       }
-      .tkl-box {
-        background: #fff8f4;
-        border: 1.5px dashed #ffb48a;
+
+      /* 口令展示框 */
+      .tkl-panel {
+        background: #fff3ee;
+        border: 1.5px dashed #ff9b7a;
         border-radius: 14px;
-        padding: 14px;
+        padding: 12px 14px;
         margin-bottom: 16px;
         text-align: center;
       }
-      .tkl-label {
+      .tkl-desc {
         font-size: 12px;
-        color: #ff6a24;
+        color: #8c5a4a;
         margin-bottom: 6px;
-        font-weight: 600;
       }
       .tkl-text {
         width: 100%;
         border: none;
         background: transparent;
         text-align: center;
-        font-size: 15px;
-        font-weight: 700;
-        color: #1f2329;
-        line-height: 1.5;
+        font-size: 16px;
+        font-weight: 800;
+        color: #1f1f1f;
+        line-height: 1.45;
         resize: none;
         outline: none;
         font-family: inherit;
       }
-      .btn-primary {
+
+      /* 按钮组 */
+      .btn-copy {
         width: 100%;
-        height: 48px;
+        height: 50px;
         border: none;
         border-radius: 999px;
-        background: linear-gradient(90deg, #ff5000 0%, #ff7b00 100%);
+        background: linear-gradient(90deg, #ff2a2a 0%, #ff6c00 100%);
         color: #ffffff;
-        font-size: 16px;
-        font-weight: 700;
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: 1px;
         cursor: pointer;
-        box-shadow: 0 8px 18px rgba(255, 80, 0, 0.28);
-        transition: transform 0.12s ease, opacity 0.12s ease;
+        box-shadow: 0 8px 20px rgba(255, 58, 30, 0.34);
+        transition: transform 0.12s ease;
       }
-      .btn-primary:active {
+      .btn-copy:active {
         transform: scale(0.98);
       }
-      .btn-primary.copied {
+      .btn-copy.copied {
         background: linear-gradient(90deg, #16a34a 0%, #22c55e 100%);
-        box-shadow: 0 8px 18px rgba(22, 163, 74, 0.24);
+        box-shadow: 0 8px 20px rgba(22, 163, 74, 0.3);
       }
-      .btn-secondary {
+      .btn-open {
         width: 100%;
         height: 42px;
         margin-top: 10px;
-        border: 1px solid #ffd2bd;
+        border: 1px solid #ffd0c2;
         border-radius: 999px;
-        background: #fffaf7;
-        color: #ff5000;
+        background: #ffffff;
+        color: #ef3b32;
         font-size: 14px;
         font-weight: 600;
         cursor: pointer;
       }
-      .steps {
-        margin-top: 20px;
-        padding-top: 16px;
-        border-top: 1px solid #f0f1f5;
-      }
-      .step-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
+      .error-tip {
+        display: none;
+        margin-top: 10px;
         font-size: 13px;
-        line-height: 1.5;
-        color: #4e5969;
-      }
-      .step-item + .step-item {
-        margin-top: 8px;
-      }
-      .step-num {
-        flex-shrink: 0;
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        background: #fff2eb;
-        color: #ff5000;
-        font-size: 11px;
-        font-weight: 700;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 1px;
+        color: #d92d20;
+        text-align: center;
       }
       .footer-link {
+        position: relative;
+        z-index: 1;
         margin-top: 18px;
         font-size: 13px;
-        color: #8f959e;
+        color: rgba(255, 255, 255, 0.88);
         text-decoration: none;
       }
       .footer-link strong {
-        color: #ff5000;
+        color: #fff2a6;
       }
       .toast {
         position: fixed;
         left: 50%;
-        bottom: 32px;
+        bottom: 34px;
         transform: translateX(-50%) translateY(20px);
-        background: rgba(20, 23, 28, 0.88);
+        background: rgba(17, 17, 17, 0.88);
         color: #ffffff;
         padding: 10px 18px;
         border-radius: 999px;
@@ -189,48 +340,50 @@
         opacity: 1;
         transform: translateX(-50%) translateY(0);
       }
-      .error-tip {
-        color: #dc2626;
-        font-size: 13px;
-        text-align: center;
-        margin-top: 10px;
-        display: none;
-      }
     </style>
   </head>
   <body>
     <div class="page-wrap">
-      <div class="card">
-        <div class="brand-row">
-          <span class="badge" id="badgeText">淘宝限时福利</span>
-          <a class="site-tag" href="/">小泽羊毛</a>
+      <div class="bg-decor" aria-hidden="true">
+        <div class="gift-left"></div>
+        <div class="grid-left"></div>
+        <div class="gift-right"></div>
+        <div class="coin-right"></div>
+      </div>
+
+      <header class="hero">
+        <h1 class="hero-big" id="badgeText">每天有福利</h1>
+        <div class="hero-pill">复制口令打开淘宝领红包</div>
+      </header>
+
+      <main class="card">
+        <div class="card-header">
+          <span class="header-dot" aria-hidden="true"></span>
+          <h2 class="card-title" id="titleText">正在加载福利...</h2>
         </div>
 
-        <h1 class="title" id="titleText">正在加载口令...</h1>
-        <p class="desc" id="descText">复制下方淘口令后，打开手机淘宝 App 即可自动弹出活动页面</p>
+        <div class="steps">
+          <div class="step-row">
+            <span class="step-num">1</span>
+            <span>第一步：点击下方按钮<span class="hl-red">复制淘口令</span></span>
+          </div>
+          <div class="step-row">
+            <span class="step-num">2</span>
+            <span>第二步：<span class="tb-icon">淘</span><span class="hl-red">打开淘宝</span>，领取红包</span>
+          </div>
+        </div>
 
-        <div class="tkl-box">
-          <div class="tkl-label">长按或点击下方按钮复制口令</div>
+        <div class="tkl-panel">
+          <div class="tkl-desc" id="descText">长按或点击下方按钮复制口令</div>
           <textarea class="tkl-text" id="tklInput" rows="2" readonly></textarea>
         </div>
 
-        <button class="btn-primary" id="copyBtn" type="button">一键复制口令</button>
-        <button class="btn-secondary" id="openTbBtn" type="button">已复制，打开手机淘宝</button>
+        <button class="btn-copy" id="copyBtn" type="button">一键复制淘口令</button>
+        <button class="btn-open" id="openTbBtn" type="button">已复制，打开手机淘宝</button>
         <div class="error-tip" id="errorTip">未找到有效口令，请检查链接参数</div>
+      </main>
 
-        <div class="steps">
-          <div class="step-item">
-            <span class="step-num">1</span>
-            <span>点击上方<strong>「一键复制口令」</strong>按钮（如在微信中无反应，可长按口令框手动复制）。</span>
-          </div>
-          <div class="step-item">
-            <span class="step-num">2</span>
-            <span>切回桌面打开<strong>手机淘宝 App</strong>，等待 1-2 秒即可自动弹出对应优惠页面。</span>
-          </div>
-        </div>
-      </div>
-
-      <a class="footer-link" href="/">查看更多每日线报 → <strong>小泽羊毛</strong></a>
+      <a class="footer-link" href="/">更多每日红包线报 → <strong>小泽羊毛</strong></a>
     </div>
 
     <div class="toast" id="toast">已复制口令，请打开手机淘宝</div>
@@ -271,9 +424,9 @@
         }
 
         function applyData(data) {
-          var title = data.title || "淘宝限时购福利";
-          var badge = data.badge || "淘宝限时福利";
-          var desc = data.desc || "复制下方淘口令后，打开手机淘宝 App 即可自动弹出领券";
+          var title = data.title || "最高15-15 红包天天领";
+          var badge = data.badge || "每天有福利";
+          var desc = data.desc || "复制下方口令后打开手机淘宝即可领取";
           var tkl = (data.tkl || "").trim();
 
           document.title = title + " - 小泽羊毛";
@@ -316,7 +469,7 @@
         function copyTkl() {
           if (!currentTkl) return;
           var done = function () {
-            copyBtn.textContent = "✅ 已复制！请打开淘宝 App";
+            copyBtn.textContent = "✅ 已复制口令，去打开淘宝";
             copyBtn.classList.add("copied");
             showToast("已复制口令，快去打开手机淘宝吧");
           };
@@ -344,13 +497,12 @@
           if (currentTkl) copyTkl();
           var isWeChat = /MicroMessenger/i.test(navigator.userAgent);
           if (isWeChat) {
-            showToast("微信内无法直接跳转，请手动切回桌面打开淘宝");
+            showToast("微信内无法直接跳转，请切回桌面打开淘宝");
             return;
           }
           window.location.href = "taobao://";
         });
 
-        // 1) Base64 直传模式 (?d=...)
         var dParam = params.get("d");
         if (dParam) {
           var raw = decodeBase64Utf8(dParam);
@@ -360,19 +512,17 @@
           } catch (e) {}
         }
 
-        // 2) 明文参数模式 (?tkl=...&title=...)
         var tklParam = params.get("tkl");
         if (tklParam) {
           applyData({
             tkl: tklParam,
-            title: params.get("title") || "淘宝限时购福利",
-            badge: params.get("badge") || "淘宝限时福利",
+            title: params.get("title") || "最高15-15 红包天天领",
+            badge: params.get("badge") || "每天有福利",
             desc: params.get("desc") || ""
           });
           return;
         }
 
-        // 3) 短码配置模式 (?code=xianshi15)
         var codeParam = params.get("code");
         if (codeParam) {
           fetch("/assets/tb-links.json?v=" + Date.now())
